@@ -1,3 +1,4 @@
+#include "wg_broker/owned_ptr.hpp"
 #include <dbus/dbus.h>
 
 #include <wg_broker/dbus_connection.hpp>
@@ -24,6 +25,11 @@ OwnedPtr<DBusConnection> establish_connection(DBusBusType type) {
     }
 
     return OwnedPtr<DBusConnection>(std::move(connection), dbus_connection_unref);
+}
+
+OwnedPtr<DBusMessage>  connection_pop_message(DBusConnection* connection) {
+    DBusMessage* message = dbus_connection_pop_message(connection);
+    return OwnedPtr<DBusMessage>(message, dbus_message_unref);
 }
 
 

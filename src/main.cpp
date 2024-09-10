@@ -29,17 +29,14 @@ int main() {
     while (true) {
         // Non-blocking read of the next message
         dbus_connection_read_write(connection.get(), 0);
-        DBusMessage* message = dbus_connection_pop_message(connection.get());
+        OwnedPtr<DBusMessage> message = ussur::wg::connection_pop_message(connection);
         
-        if (message == nullptr) {
+        if (message.get() == nullptr) {
             continue; // No message, loop
         }
 
         // Process the message if it's a method call
         // process_message(connection, message);
-
-        // Unreference the message when done
-        dbus_message_unref(message);
     }
 
     return 0;
