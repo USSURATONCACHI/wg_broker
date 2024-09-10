@@ -1,7 +1,5 @@
 #include "dbus/dbus-shared.h"
-#include <exception>
 #include <iostream>
-#include <stdexcept>
 #include <string>
 
 #include <dbus/dbus.h>
