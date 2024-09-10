@@ -14,7 +14,7 @@ OwnedPtr<DBusConnection> establish_connection(DBusBusType type) {
     dbus_error_init(&error);
 
     // Connect to the session bus
-    DBusConnection* connection = dbus_bus_get(DBUS_BUS_SESSION, &error);
+    DBusConnection* connection = dbus_bus_get(type, &error);
     if (dbus_error_is_set(&error)) {
         std::string error_msg = std::string("Connection error: ") + error.message;
         dbus_error_free(&error);
