@@ -1,0 +1,8 @@
+<node>
+  <interface name="example.EchoService">
+    <method name="Echo">
+      <arg type="s" name="input" direction="in"/>
+      <arg type="s" name="output" direction="out"/>
+    </method>
+  </interface>
+</node>

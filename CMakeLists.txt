@@ -8,8 +8,19 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(DBUS REQUIRED dbus-1)
+pkg_check_modules(GIO REQUIRED gio-2.0)
+pkg_check_modules(GLIB REQUIRED glib-2.0)
 
 include_directories(${DBUS_INCLUDE_DIRS})
+
+add_library(generated STATIC
+    src/gen/echo_skeleton.c
+)
+target_include_directories(generated PUBLIC include/wg_broker/gen/)
+target_include_directories(generated PUBLIC ${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS})
+target_link_libraries(generated ${DBUS_LIBRARIES} ${GLIB_LIBRARIES} ${GIO_LIBRARIES})
+target_compile_options(generated PRIVATE ${DBUS_CFLAGS_OTHER})
+
 
 add_executable(wg_broker
     src/main.cpp
@@ -17,5 +28,5 @@ add_executable(wg_broker
     src/owned_bus_name.cpp
 )
 target_include_directories(wg_broker PUBLIC include)
-target_link_libraries(wg_broker ${DBUS_LIBRARIES})
+target_link_libraries(wg_broker generated ${DBUS_LIBRARIES})
 target_compile_options(wg_broker PRIVATE ${DBUS_CFLAGS_OTHER})

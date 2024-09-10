@@ -9,9 +9,14 @@
 #include <wg_broker/owned_bus_name.hpp>
 #include <wg_broker/owned_ptr.hpp>
 
+extern "C" {
+    #include <wg_broker/gen/echo_skeleton.h>
+}
+
 using ussur::wg::OwnedPtr;
 using ussur::wg::OwnedBusName;
 
+static void process_message(DBusConnection* connection, DBusMessage* message);
 
 int main() {
     std::cout << "Program starts." << std::endl;
@@ -36,8 +41,27 @@ int main() {
         }
 
         // Process the message if it's a method call
-        // process_message(connection, message);
+        process_message(connection.get(), message.get());
     }
 
     return 0;
+}
+
+static void process_message(DBusConnection* connection, DBusMessage* message) {
+    if (dbus_message_is_method_call(message, "ussur.wg.Broker", "doSigma")) {
+
+        const char* input;
+        DBusMessageIter args;
+        
+        if (!dbus_message_iter_init(message, &args)) {
+            std::cerr << "Message has no arguments." << std::endl;
+        } else if (DBUS_TYPE_STRING != dbus_message_iter_get_arg_type(&args)) {
+            std::cerr << "Argument is not a string." << std::endl;
+        } else {
+            dbus_message_iter_get_basic(&args, &input);
+            std::string response = input;
+            // send_reply(connection, message, response);
+        }
+    }
+
 }
