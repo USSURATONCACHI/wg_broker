@@ -53,7 +53,6 @@ public:
     }
 
     T* get() {
-        assert(ptr_ && "Dereferencing a null pointer");
         return ptr_;
     }
 
