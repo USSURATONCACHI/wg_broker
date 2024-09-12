@@ -1,6 +1,8 @@
 #pragma once
 
 #include <string>
+#include <functional>
+#include <optional>
 
 #include <gio/gio.h>
 #include <wg_broker/owned_ptr.hpp>
@@ -13,7 +15,11 @@ namespace ussur {
 namespace wg {
 
 
-OwnedPtr<ExampleEchoService> create_skeleton(GDBusConnection* connection, const std::string& object_path);
+OwnedPtr<ExampleEchoService> create_skeleton(
+    GDBusConnection* connection, 
+    const std::string& object_path,
+    std::function<void(ExampleEchoService*)> callback_signal_connect
+);
 
 
 } // namespace wg
