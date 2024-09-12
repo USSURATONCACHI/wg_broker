@@ -1,6 +1,6 @@
 #pragma once
 
-#include <dbus/dbus.h>
+#include <gio/gio.h>
 #include <string>
 
 namespace ussur {
@@ -9,18 +9,18 @@ namespace wg {
 
 struct OwnedBusName {
 public:
-    DBusConnection* connection; // To be able to free it later
+    GDBusConnection* connection; // To be able to free it later
     std::string name;
     
 public:
-    static OwnedBusName acquire(DBusConnection* conn, const std::string& name, unsigned int flags);
+    static OwnedBusName acquire(GDBusConnection* conn, const std::string& name, unsigned int flags);
     ~OwnedBusName();
     OwnedBusName(OwnedBusName&& move_from);
     OwnedBusName& operator=(OwnedBusName&& move_from);
 
 private:
     OwnedBusName() noexcept;
-    OwnedBusName(DBusConnection* conn, std::string&& name) noexcept;
+    OwnedBusName(GDBusConnection* conn, std::string&& name) noexcept;
 };
 
 

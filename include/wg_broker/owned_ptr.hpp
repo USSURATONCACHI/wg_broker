@@ -10,12 +10,20 @@ template<typename T>
 class OwnedPtr {
 public:
     // Constructor that takes a raw pointer and a freeing function
-    OwnedPtr(T* ptr, void(*freeFunc)(T*)) : ptr_(ptr), freeFunc_(freeFunc) {
+    OwnedPtr(T* ptr, void(*freeFunc)(T*)) 
+        : ptr_(ptr), freeFunc_(freeFunc) 
+    {
         assert(freeFunc_ && "Freeing function cannot be null");
     }
 
+    OwnedPtr(T* ptr, void(*freeFunc)(void*)) 
+        : OwnedPtr(ptr, (void(*)(T*)) freeFunc) 
+        {}
+
     // Move constructor
-    OwnedPtr(OwnedPtr&& other) noexcept : ptr_(other.ptr_), freeFunc_(other.freeFunc_) {
+    OwnedPtr(OwnedPtr&& other) noexcept 
+        : ptr_(other.ptr_), freeFunc_(other.freeFunc_) 
+    {
         other.ptr_ = nullptr;
         other.freeFunc_ = nullptr;
     }

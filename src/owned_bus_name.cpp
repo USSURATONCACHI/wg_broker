@@ -9,33 +9,59 @@ namespace wg {
 
     // DBusConnection* connection; // To be able to free it later
     // std::string name;
-OwnedBusName OwnedBusName::acquire(DBusConnection* conn, const std::string& name, unsigned int flags) {
-    DBusError error;
-    dbus_error_init(&error);
+OwnedBusName OwnedBusName::acquire(GDBusConnection* conn, const std::string& name, unsigned int flags) {
+    GError *error = NULL;
+    GVariant *result = g_dbus_connection_call_sync(
+        conn,
+        "org.freedesktop.DBus",  // Bus name to call
+        "/org/freedesktop/DBus", // Object path
+        "org.freedesktop.DBus",  // Interface name
+        "RequestName",           // Method name
+        g_variant_new("(su)", name.c_str(), flags),  // Parameters
+        NULL,                    // Expected reply type
+        G_DBUS_CALL_FLAGS_NONE,   // Call flags
+        -1,                       // Timeout (use default)
+        NULL,                     // Cancellable
+        &error                    // Error
+    );
 
-    int ret = dbus_bus_request_name(conn, name.c_str(), flags, &error);
-    if (dbus_error_is_set(&error)) {
-        std::string error_msg = std::string("Name error: ") + error.message;
-
-        dbus_error_free(&error);
+    if (error) {
+        std::string error_msg = std::string("Failed to request bus name: ") + error->message;
+        g_error_free(error);
         throw ussur::wg::BusNameException(error_msg);
+    } else {
+        return OwnedBusName(conn, std::string(name));
     }
-    if (ret != DBUS_REQUEST_NAME_REPLY_PRIMARY_OWNER) {
-        throw ussur::wg::BusNameException("Failed to request name (unknown reason)");
-    }
-
-    return OwnedBusName(conn, std::string(name));
 }
 
 OwnedBusName::~OwnedBusName() {
-    DBusError error;
-    dbus_error_init(&error);
+    GError *error = NULL;
 
-    dbus_bus_release_name(connection, name.c_str(), &error);
+    // Call the ReleaseName method on org.freedesktop.DBus interface
+    GVariant *result = g_dbus_connection_call_sync(
+        connection,
+        "org.freedesktop.DBus",            // Bus name to call
+        "/org/freedesktop/DBus",           // Object path
+        "org.freedesktop.DBus",            // Interface name
+        "ReleaseName",                     // Method name
+        g_variant_new("(s)", name.c_str()),// Parameters
+        NULL,                              // Expected reply type
+        G_DBUS_CALL_FLAGS_NONE,            // Call flags
+        -1,                                // Timeout (use default)
+        NULL,                              // Cancellable
+        &error                             // Error
+    );
 
-    if (dbus_error_is_set(&error)) {
-        std::cerr << "Release Name Error: " << error.message << std::endl;
-        dbus_error_free(&error);
+    if (error) {
+        std::cerr << "Release Name Error: " << error->message << std::endl;
+        g_error_free(error);
+    } else {
+        std::cout << "Bus name released successfully: " << name << std::endl;
+    }
+
+    // Cleanup the result if necessary
+    if (result) {
+        g_variant_unref(result);
     }
 }
 
@@ -59,7 +85,7 @@ OwnedBusName::OwnedBusName() noexcept :
     name()
 {}
 
-OwnedBusName::OwnedBusName(DBusConnection* conn, std::string&& name) noexcept :
+OwnedBusName::OwnedBusName(GDBusConnection* conn, std::string&& name) noexcept :
     connection(conn),
     name(std::move(name))
 {}
