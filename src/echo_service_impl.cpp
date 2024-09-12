@@ -2,6 +2,7 @@
 
 #include <wg_broker/gen/echo_skeleton.h>
 
+#include <stdexcept>
 #include <exception>
 #include <string>
 
@@ -12,7 +13,7 @@
 namespace ussur {
 namespace wg {
 
-static gboolean handle_echo(EchoService *skeleton, GDBusMethodInvocation *invocation, const gchar* arg_input, EchoService* self);
+static gboolean handle_echo(EchoService *skeleton, GDBusMethodInvocation *invocation, const gchar* arg_input, EchoServiceImpl* self);
 
 void EchoServiceImpl::connect_skeleton_signals(EchoService* skeleton) {
     g_signal_connect(skeleton, "handle-echo", G_CALLBACK(handle_echo), this);
