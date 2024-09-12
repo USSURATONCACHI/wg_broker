@@ -1,14 +1,18 @@
+#include "echo_skeleton.h"
+#include "wg_broker/owned_ptr.hpp"
 #include <wg_broker/echo_skeleton.hpp>
 
 #include <glib.h>
-#include <glib-object.h>
 #include <gio/gio.h>
-
+#include <wg_broker/exceptions.hpp>
+#include <iostream>
 
 namespace ussur {
 namespace wg {
 
-OwnedPtr<ExampleEchoService> create_skeleton(DBusConnection* connection, const std::string& object_path) {
+static void destruct_broker_skeleton(ExampleEchoService* skeleton);
+
+OwnedPtr<ExampleEchoService> create_skeleton(GDBusConnection* connection, const std::string& object_path) {
     ExampleEchoService* skeleton = example_echo_service_skeleton_new();
 
     // g_signal_connect(skeleton, "skibidi-sigma", G_CALLBACK(), this);
@@ -24,12 +28,21 @@ OwnedPtr<ExampleEchoService> create_skeleton(DBusConnection* connection, const s
     if (!success) {
         std::string msg = "Error exporting broker skeleton: " + std::string(error->message);
         g_error_free(error);
-        throw new std::runtime_error(msg);
+        throw SkeletonException(msg);
         // exit(1);
     }
     
     // Print some info for debugging purposes
-    std::cout << "Broker D-Bus service running at object path: " << m_object_path <<  std::endl;
+    std::cout << "Exported an echo skeleton to object path: " << object_path <<  std::endl;
+
+    return OwnedPtr<ExampleEchoService>(skeleton, destruct_broker_skeleton);
+}
+
+static void destruct_broker_skeleton(ExampleEchoService* skeleton) {
+    if (skeleton) {
+        g_dbus_interface_skeleton_unexport(G_DBUS_INTERFACE_SKELETON(skeleton));
+        g_object_unref(skeleton);
+    }
 }
 
 } // namespace wg

@@ -2,7 +2,7 @@
 
 #include <string>
 
-#include <dbus/dbus.h>
+#include <gio/gio.h>
 #include <wg_broker/owned_ptr.hpp>
 
 extern "C" {
@@ -13,7 +13,7 @@ namespace ussur {
 namespace wg {
 
 
-OwnedPtr<ExampleEchoService> create_skeleton(DBusConnection* connection, const std::string& object_path);
+OwnedPtr<ExampleEchoService> create_skeleton(GDBusConnection* connection, const std::string& object_path);
 
 
 } // namespace wg
