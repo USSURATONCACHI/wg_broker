@@ -1,8 +1,11 @@
 <node>
-  <interface name="example.EchoService">
+  <interface name="ussur.wg.EchoService">
     <method name="Echo">
       <arg type="s" name="input" direction="in"/>
       <arg type="s" name="output" direction="out"/>
     </method>
+    <error name="ussur.wg.EchoError">
+      <arg type="s" name="message" direction="out"/>
+    </error>
   </interface>
 </node>

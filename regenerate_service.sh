@@ -1,6 +1,6 @@
 export FILENAME=echo_skeleton
 
-gdbus-codegen --generate-c-code=$FILENAME --interface-prefix=ussur.wg_ui. example.EchoService.xml
+gdbus-codegen --generate-c-code=$FILENAME --interface-prefix=ussur.wg. EchoService.xml
 mkdir -p src/gen
 mkdir -p include/wg_broker/gen
 mv $FILENAME.c src/gen/$FILENAME.c

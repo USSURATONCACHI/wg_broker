@@ -243,21 +243,21 @@ _g_dbus_codegen_marshal_BOOLEAN__OBJECT_STRING (
 }
 
 /* ------------------------------------------------------------------------
- * Code for interface example.EchoService
+ * Code for interface ussur.wg.EchoService
  * ------------------------------------------------------------------------
  */
 
 /**
- * SECTION:ExampleEchoService
- * @title: ExampleEchoService
- * @short_description: Generated C code for the example.EchoService D-Bus interface
+ * SECTION:EchoService
+ * @title: EchoService
+ * @short_description: Generated C code for the ussur.wg.EchoService D-Bus interface
  *
- * This section contains code for working with the <link linkend="gdbus-interface-example-EchoService.top_of_page">example.EchoService</link> D-Bus interface in C.
+ * This section contains code for working with the <link linkend="gdbus-interface-ussur-wg-EchoService.top_of_page">ussur.wg.EchoService</link> D-Bus interface in C.
  */
 
-/* ---- Introspection data for example.EchoService ---- */
+/* ---- Introspection data for ussur.wg.EchoService ---- */
 
-static const _ExtendedGDBusArgInfo _example_echo_service_method_info_echo_IN_ARG_input =
+static const _ExtendedGDBusArgInfo _echo_service_method_info_echo_IN_ARG_input =
 {
   {
     -1,
@@ -268,13 +268,13 @@ static const _ExtendedGDBusArgInfo _example_echo_service_method_info_echo_IN_ARG
   FALSE
 };
 
-static const GDBusArgInfo * const _example_echo_service_method_info_echo_IN_ARG_pointers[] =
+static const GDBusArgInfo * const _echo_service_method_info_echo_IN_ARG_pointers[] =
 {
-  &_example_echo_service_method_info_echo_IN_ARG_input.parent_struct,
+  &_echo_service_method_info_echo_IN_ARG_input.parent_struct,
   NULL
 };
 
-static const _ExtendedGDBusArgInfo _example_echo_service_method_info_echo_OUT_ARG_output =
+static const _ExtendedGDBusArgInfo _echo_service_method_info_echo_OUT_ARG_output =
 {
   {
     -1,
@@ -285,77 +285,77 @@ static const _ExtendedGDBusArgInfo _example_echo_service_method_info_echo_OUT_AR
   FALSE
 };
 
-static const GDBusArgInfo * const _example_echo_service_method_info_echo_OUT_ARG_pointers[] =
+static const GDBusArgInfo * const _echo_service_method_info_echo_OUT_ARG_pointers[] =
 {
-  &_example_echo_service_method_info_echo_OUT_ARG_output.parent_struct,
+  &_echo_service_method_info_echo_OUT_ARG_output.parent_struct,
   NULL
 };
 
-static const _ExtendedGDBusMethodInfo _example_echo_service_method_info_echo =
+static const _ExtendedGDBusMethodInfo _echo_service_method_info_echo =
 {
   {
     -1,
     (gchar *) "Echo",
-    (GDBusArgInfo **) &_example_echo_service_method_info_echo_IN_ARG_pointers,
-    (GDBusArgInfo **) &_example_echo_service_method_info_echo_OUT_ARG_pointers,
+    (GDBusArgInfo **) &_echo_service_method_info_echo_IN_ARG_pointers,
+    (GDBusArgInfo **) &_echo_service_method_info_echo_OUT_ARG_pointers,
     NULL
   },
   "handle-echo",
   FALSE
 };
 
-static const GDBusMethodInfo * const _example_echo_service_method_info_pointers[] =
+static const GDBusMethodInfo * const _echo_service_method_info_pointers[] =
 {
-  &_example_echo_service_method_info_echo.parent_struct,
+  &_echo_service_method_info_echo.parent_struct,
   NULL
 };
 
-static const _ExtendedGDBusInterfaceInfo _example_echo_service_interface_info =
+static const _ExtendedGDBusInterfaceInfo _echo_service_interface_info =
 {
   {
     -1,
-    (gchar *) "example.EchoService",
-    (GDBusMethodInfo **) &_example_echo_service_method_info_pointers,
+    (gchar *) "ussur.wg.EchoService",
+    (GDBusMethodInfo **) &_echo_service_method_info_pointers,
     NULL,
     NULL,
     NULL
   },
-  "example-echo-service",
+  "echo-service",
 };
 
 
 /**
- * example_echo_service_interface_info:
+ * echo_service_interface_info:
  *
- * Gets a machine-readable description of the <link linkend="gdbus-interface-example-EchoService.top_of_page">example.EchoService</link> D-Bus interface.
+ * Gets a machine-readable description of the <link linkend="gdbus-interface-ussur-wg-EchoService.top_of_page">ussur.wg.EchoService</link> D-Bus interface.
  *
  * Returns: (transfer none): A #GDBusInterfaceInfo. Do not free.
  */
 GDBusInterfaceInfo *
-example_echo_service_interface_info (void)
+echo_service_interface_info (void)
 {
-  return (GDBusInterfaceInfo *) &_example_echo_service_interface_info.parent_struct;
+  return (GDBusInterfaceInfo *) &_echo_service_interface_info.parent_struct;
 }
 
 /**
- * example_echo_service_override_properties:
+ * echo_service_override_properties:
  * @klass: The class structure for a #GObject derived class.
  * @property_id_begin: The property id to assign to the first overridden property.
  *
- * Overrides all #GObject properties in the #ExampleEchoService interface for a concrete class.
+ * Overrides all #GObject properties in the #EchoService interface for a concrete class.
  * The properties are overridden in the order they are defined.
  *
  * Returns: The last property id.
  */
 guint
-example_echo_service_override_properties (GObjectClass *klass G_GNUC_UNUSED, guint property_id_begin)
+echo_service_override_properties (GObjectClass *klass G_GNUC_UNUSED, guint property_id_begin)
 {
   return property_id_begin - 1;
 }
 
 
 inline static void
-example_echo_service_method_marshal_echo (
+echo_service_method_marshal_echo (
     GClosure     *closure,
     GValue       *return_value,
     unsigned int  n_param_values,
@@ -369,45 +369,45 @@ example_echo_service_method_marshal_echo (
 
 
 /**
- * ExampleEchoService:
+ * EchoService:
  *
- * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-example-EchoService.top_of_page">example.EchoService</link>.
+ * Abstract interface type for the D-Bus interface <link linkend="gdbus-interface-ussur-wg-EchoService.top_of_page">ussur.wg.EchoService</link>.
  */
 
 /**
- * ExampleEchoServiceIface:
+ * EchoServiceIface:
  * @parent_iface: The parent interface.
- * @handle_echo: Handler for the #ExampleEchoService::handle-echo signal.
+ * @handle_echo: Handler for the #EchoService::handle-echo signal.
  *
- * Virtual table for the D-Bus interface <link linkend="gdbus-interface-example-EchoService.top_of_page">example.EchoService</link>.
+ * Virtual table for the D-Bus interface <link linkend="gdbus-interface-ussur-wg-EchoService.top_of_page">ussur.wg.EchoService</link>.
  */
 
-typedef ExampleEchoServiceIface ExampleEchoServiceInterface;
-G_DEFINE_INTERFACE (ExampleEchoService, example_echo_service, G_TYPE_OBJECT)
+typedef EchoServiceIface EchoServiceInterface;
+G_DEFINE_INTERFACE (EchoService, echo_service, G_TYPE_OBJECT)
 
 static void
-example_echo_service_default_init (ExampleEchoServiceIface *iface)
+echo_service_default_init (EchoServiceIface *iface)
 {
   /* GObject signals for incoming D-Bus method calls: */
   /**
-   * ExampleEchoService::handle-echo:
-   * @object: A #ExampleEchoService.
+   * EchoService::handle-echo:
+   * @object: A #EchoService.
    * @invocation: A #GDBusMethodInvocation.
    * @arg_input: Argument passed by remote caller.
    *
-   * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-example-EchoService.Echo">Echo()</link> D-Bus method.
+   * Signal emitted when a remote caller is invoking the <link linkend="gdbus-method-ussur-wg-EchoService.Echo">Echo()</link> D-Bus method.
    *
-   * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to @invocation and eventually call example_echo_service_complete_echo() or e.g. g_dbus_method_invocation_return_error() on it) and no other signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
+   * If a signal handler returns %TRUE, it means the signal handler will handle the invocation (e.g. take a reference to @invocation and eventually call echo_service_complete_echo() or e.g. g_dbus_method_invocation_return_error() on it) and no other signal handlers will run. If no signal handler handles the invocation, the %G_DBUS_ERROR_UNKNOWN_METHOD error is returned.
    *
    * Returns: %G_DBUS_METHOD_INVOCATION_HANDLED or %TRUE if the invocation was handled, %G_DBUS_METHOD_INVOCATION_UNHANDLED or %FALSE to let other signal handlers run.
    */
   g_signal_new ("handle-echo",
     G_TYPE_FROM_INTERFACE (iface),
     G_SIGNAL_RUN_LAST,
-    G_STRUCT_OFFSET (ExampleEchoServiceIface, handle_echo),
+    G_STRUCT_OFFSET (EchoServiceIface, handle_echo),
     g_signal_accumulator_true_handled,
     NULL,
-      example_echo_service_method_marshal_echo,
+      echo_service_method_marshal_echo,
     G_TYPE_BOOLEAN,
     2,
     G_TYPE_DBUS_METHOD_INVOCATION, G_TYPE_STRING);
@@ -415,22 +415,22 @@ example_echo_service_default_init (ExampleEchoServiceIface *iface)
 }
 
 /**
- * example_echo_service_call_echo:
- * @proxy: A #ExampleEchoServiceProxy.
+ * echo_service_call_echo:
+ * @proxy: A #EchoServiceProxy.
  * @arg_input: Argument to pass with the method invocation.
  * @cancellable: (nullable): A #GCancellable or %NULL.
  * @callback: A #GAsyncReadyCallback to call when the request is satisfied or %NULL.
  * @user_data: User data to pass to @callback.
  *
- * Asynchronously invokes the <link linkend="gdbus-method-example-EchoService.Echo">Echo()</link> D-Bus method on @proxy.
+ * Asynchronously invokes the <link linkend="gdbus-method-ussur-wg-EchoService.Echo">Echo()</link> D-Bus method on @proxy.
  * When the operation is finished, @callback will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
- * You can then call example_echo_service_call_echo_finish() to get the result of the operation.
+ * You can then call echo_service_call_echo_finish() to get the result of the operation.
  *
- * See example_echo_service_call_echo_sync() for the synchronous, blocking version of this method.
+ * See echo_service_call_echo_sync() for the synchronous, blocking version of this method.
  */
 void
-example_echo_service_call_echo (
-    ExampleEchoService *proxy,
+echo_service_call_echo (
+    EchoService *proxy,
     const gchar *arg_input,
     GCancellable *cancellable,
     GAsyncReadyCallback callback,
@@ -448,19 +448,19 @@ example_echo_service_call_echo (
 }
 
 /**
- * example_echo_service_call_echo_finish:
- * @proxy: A #ExampleEchoServiceProxy.
+ * echo_service_call_echo_finish:
+ * @proxy: A #EchoServiceProxy.
  * @out_output: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to example_echo_service_call_echo().
+ * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to echo_service_call_echo().
  * @error: Return location for error or %NULL.
  *
- * Finishes an operation started with example_echo_service_call_echo().
+ * Finishes an operation started with echo_service_call_echo().
  *
  * Returns: (skip): %TRUE if the call succeeded, %FALSE if @error is set.
  */
 gboolean
-example_echo_service_call_echo_finish (
-    ExampleEchoService *proxy,
+echo_service_call_echo_finish (
+    EchoService *proxy,
     gchar **out_output,
     GAsyncResult *res,
     GError **error)
@@ -478,22 +478,22 @@ _out:
 }
 
 /**
- * example_echo_service_call_echo_sync:
- * @proxy: A #ExampleEchoServiceProxy.
+ * echo_service_call_echo_sync:
+ * @proxy: A #EchoServiceProxy.
  * @arg_input: Argument to pass with the method invocation.
  * @out_output: (out) (optional): Return location for return parameter or %NULL to ignore.
  * @cancellable: (nullable): A #GCancellable or %NULL.
  * @error: Return location for error or %NULL.
  *
- * Synchronously invokes the <link linkend="gdbus-method-example-EchoService.Echo">Echo()</link> D-Bus method on @proxy. The calling thread is blocked until a reply is received.
+ * Synchronously invokes the <link linkend="gdbus-method-ussur-wg-EchoService.Echo">Echo()</link> D-Bus method on @proxy. The calling thread is blocked until a reply is received.
  *
- * See example_echo_service_call_echo() for the asynchronous version of this method.
+ * See echo_service_call_echo() for the asynchronous version of this method.
  *
  * Returns: (skip): %TRUE if the call succeeded, %FALSE if @error is set.
  */
 gboolean
-example_echo_service_call_echo_sync (
-    ExampleEchoService *proxy,
+echo_service_call_echo_sync (
+    EchoService *proxy,
     const gchar *arg_input,
     gchar **out_output,
     GCancellable *cancellable,
@@ -519,18 +519,18 @@ _out:
 }
 
 /**
- * example_echo_service_complete_echo:
- * @object: A #ExampleEchoService.
+ * echo_service_complete_echo:
+ * @object: A #EchoService.
  * @invocation: (transfer full): A #GDBusMethodInvocation.
  * @output: Parameter to return.
  *
- * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-example-EchoService.Echo">Echo()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
+ * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-ussur-wg-EchoService.Echo">Echo()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
  *
  * This method will free @invocation, you cannot use it afterwards.
  */
 void
-example_echo_service_complete_echo (
-    ExampleEchoService *object G_GNUC_UNUSED,
+echo_service_complete_echo (
+    EchoService *object G_GNUC_UNUSED,
     GDBusMethodInvocation *invocation,
     const gchar *output)
 {
@@ -542,45 +542,45 @@ example_echo_service_complete_echo (
 /* ------------------------------------------------------------------------ */
 
 /**
- * ExampleEchoServiceProxy:
+ * EchoServiceProxy:
  *
- * The #ExampleEchoServiceProxy structure contains only private data and should only be accessed using the provided API.
+ * The #EchoServiceProxy structure contains only private data and should only be accessed using the provided API.
  */
 
 /**
- * ExampleEchoServiceProxyClass:
+ * EchoServiceProxyClass:
  * @parent_class: The parent class.
  *
- * Class structure for #ExampleEchoServiceProxy.
+ * Class structure for #EchoServiceProxy.
  */
 
-struct _ExampleEchoServiceProxyPrivate
+struct _EchoServiceProxyPrivate
 {
   GData *qdata;
 };
 
-static void example_echo_service_proxy_iface_init (ExampleEchoServiceIface *iface);
+static void echo_service_proxy_iface_init (EchoServiceIface *iface);
 
 #if GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_38
-G_DEFINE_TYPE_WITH_CODE (ExampleEchoServiceProxy, example_echo_service_proxy, G_TYPE_DBUS_PROXY,
-                         G_ADD_PRIVATE (ExampleEchoServiceProxy)
-                         G_IMPLEMENT_INTERFACE (TYPE_EXAMPLE_ECHO_SERVICE, example_echo_service_proxy_iface_init))
+G_DEFINE_TYPE_WITH_CODE (EchoServiceProxy, echo_service_proxy, G_TYPE_DBUS_PROXY,
+                         G_ADD_PRIVATE (EchoServiceProxy)
+                         G_IMPLEMENT_INTERFACE (TYPE_ECHO_SERVICE, echo_service_proxy_iface_init))
 
 #else
-G_DEFINE_TYPE_WITH_CODE (ExampleEchoServiceProxy, example_echo_service_proxy, G_TYPE_DBUS_PROXY,
-                         G_IMPLEMENT_INTERFACE (TYPE_EXAMPLE_ECHO_SERVICE, example_echo_service_proxy_iface_init))
+G_DEFINE_TYPE_WITH_CODE (EchoServiceProxy, echo_service_proxy, G_TYPE_DBUS_PROXY,
+                         G_IMPLEMENT_INTERFACE (TYPE_ECHO_SERVICE, echo_service_proxy_iface_init))
 
 #endif
 static void
-example_echo_service_proxy_finalize (GObject *object)
+echo_service_proxy_finalize (GObject *object)
 {
-  ExampleEchoServiceProxy *proxy = EXAMPLE_ECHO_SERVICE_PROXY (object);
+  EchoServiceProxy *proxy = ECHO_SERVICE_PROXY (object);
   g_datalist_clear (&proxy->priv->qdata);
-  G_OBJECT_CLASS (example_echo_service_proxy_parent_class)->finalize (object);
+  G_OBJECT_CLASS (echo_service_proxy_parent_class)->finalize (object);
 }
 
 static void
-example_echo_service_proxy_get_property (GObject      *object G_GNUC_UNUSED,
+echo_service_proxy_get_property (GObject      *object G_GNUC_UNUSED,
   guint         prop_id G_GNUC_UNUSED,
   GValue       *value G_GNUC_UNUSED,
   GParamSpec   *pspec G_GNUC_UNUSED)
@@ -588,7 +588,7 @@ example_echo_service_proxy_get_property (GObject      *object G_GNUC_UNUSED,
 }
 
 static void
-example_echo_service_proxy_set_property (GObject      *object G_GNUC_UNUSED,
+echo_service_proxy_set_property (GObject      *object G_GNUC_UNUSED,
   guint         prop_id G_GNUC_UNUSED,
   const GValue *value G_GNUC_UNUSED,
   GParamSpec   *pspec G_GNUC_UNUSED)
@@ -596,7 +596,7 @@ example_echo_service_proxy_set_property (GObject      *object G_GNUC_UNUSED,
 }
 
 static void
-example_echo_service_proxy_g_signal (GDBusProxy *proxy,
+echo_service_proxy_g_signal (GDBusProxy *proxy,
   const gchar *sender_name G_GNUC_UNUSED,
   const gchar *signal_name,
   GVariant *parameters)
@@ -608,12 +608,12 @@ example_echo_service_proxy_g_signal (GDBusProxy *proxy,
   gsize num_params;
   gsize n;
   guint signal_id;
-  info = (_ExtendedGDBusSignalInfo *) g_dbus_interface_info_lookup_signal ((GDBusInterfaceInfo *) &_example_echo_service_interface_info.parent_struct, signal_name);
+  info = (_ExtendedGDBusSignalInfo *) g_dbus_interface_info_lookup_signal ((GDBusInterfaceInfo *) &_echo_service_interface_info.parent_struct, signal_name);
   if (info == NULL)
     return;
   num_params = g_variant_n_children (parameters);
   paramv = g_new0 (GValue, num_params + 1);
-  g_value_init (&paramv[0], TYPE_EXAMPLE_ECHO_SERVICE);
+  g_value_init (&paramv[0], TYPE_ECHO_SERVICE);
   g_value_set_object (&paramv[0], proxy);
   g_variant_iter_init (&iter, parameters);
   n = 1;
@@ -630,7 +630,7 @@ example_echo_service_proxy_g_signal (GDBusProxy *proxy,
         g_dbus_gvariant_to_gvalue (child, &paramv[n++]);
       g_variant_unref (child);
     }
-  signal_id = g_signal_lookup (info->signal_name, TYPE_EXAMPLE_ECHO_SERVICE);
+  signal_id = g_signal_lookup (info->signal_name, TYPE_ECHO_SERVICE);
   g_signal_emitv (paramv, signal_id, 0, NULL);
   for (n = 0; n < num_params + 1; n++)
     g_value_unset (&paramv[n]);
@@ -638,11 +638,11 @@ example_echo_service_proxy_g_signal (GDBusProxy *proxy,
 }
 
 static void
-example_echo_service_proxy_g_properties_changed (GDBusProxy *_proxy,
+echo_service_proxy_g_properties_changed (GDBusProxy *_proxy,
   GVariant *changed_properties,
   const gchar *const *invalidated_properties)
 {
-  ExampleEchoServiceProxy *proxy = EXAMPLE_ECHO_SERVICE_PROXY (_proxy);
+  EchoServiceProxy *proxy = ECHO_SERVICE_PROXY (_proxy);
   guint n;
   const gchar *key;
   GVariantIter *iter;
@@ -650,7 +650,7 @@ example_echo_service_proxy_g_properties_changed (GDBusProxy *_proxy,
   g_variant_get (changed_properties, "a{sv}", &iter);
   while (g_variant_iter_next (iter, "{&sv}", &key, NULL))
     {
-      info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_example_echo_service_interface_info.parent_struct, key);
+      info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_echo_service_interface_info.parent_struct, key);
       g_datalist_remove_data (&proxy->priv->qdata, key);
       if (info != NULL)
         g_object_notify (G_OBJECT (proxy), info->hyphen_name);
@@ -658,7 +658,7 @@ example_echo_service_proxy_g_properties_changed (GDBusProxy *_proxy,
   g_variant_iter_free (iter);
   for (n = 0; invalidated_properties[n] != NULL; n++)
     {
-      info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_example_echo_service_interface_info.parent_struct, invalidated_properties[n]);
+      info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_echo_service_interface_info.parent_struct, invalidated_properties[n]);
       g_datalist_remove_data (&proxy->priv->qdata, invalidated_properties[n]);
       if (info != NULL)
         g_object_notify (G_OBJECT (proxy), info->hyphen_name);
@@ -666,44 +666,44 @@ example_echo_service_proxy_g_properties_changed (GDBusProxy *_proxy,
 }
 
 static void
-example_echo_service_proxy_init (ExampleEchoServiceProxy *proxy)
+echo_service_proxy_init (EchoServiceProxy *proxy)
 {
 #if GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_38
-  proxy->priv = example_echo_service_proxy_get_instance_private (proxy);
+  proxy->priv = echo_service_proxy_get_instance_private (proxy);
 #else
-  proxy->priv = G_TYPE_INSTANCE_GET_PRIVATE (proxy, TYPE_EXAMPLE_ECHO_SERVICE_PROXY, ExampleEchoServiceProxyPrivate);
+  proxy->priv = G_TYPE_INSTANCE_GET_PRIVATE (proxy, TYPE_ECHO_SERVICE_PROXY, EchoServiceProxyPrivate);
 #endif
 
-  g_dbus_proxy_set_interface_info (G_DBUS_PROXY (proxy), example_echo_service_interface_info ());
+  g_dbus_proxy_set_interface_info (G_DBUS_PROXY (proxy), echo_service_interface_info ());
 }
 
 static void
-example_echo_service_proxy_class_init (ExampleEchoServiceProxyClass *klass)
+echo_service_proxy_class_init (EchoServiceProxyClass *klass)
 {
   GObjectClass *gobject_class;
   GDBusProxyClass *proxy_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->finalize     = example_echo_service_proxy_finalize;
-  gobject_class->get_property = example_echo_service_proxy_get_property;
-  gobject_class->set_property = example_echo_service_proxy_set_property;
+  gobject_class->finalize     = echo_service_proxy_finalize;
+  gobject_class->get_property = echo_service_proxy_get_property;
+  gobject_class->set_property = echo_service_proxy_set_property;
 
   proxy_class = G_DBUS_PROXY_CLASS (klass);
-  proxy_class->g_signal = example_echo_service_proxy_g_signal;
-  proxy_class->g_properties_changed = example_echo_service_proxy_g_properties_changed;
+  proxy_class->g_signal = echo_service_proxy_g_signal;
+  proxy_class->g_properties_changed = echo_service_proxy_g_properties_changed;
 
 #if GLIB_VERSION_MAX_ALLOWED < GLIB_VERSION_2_38
-  g_type_class_add_private (klass, sizeof (ExampleEchoServiceProxyPrivate));
+  g_type_class_add_private (klass, sizeof (EchoServiceProxyPrivate));
 #endif
 }
 
 static void
-example_echo_service_proxy_iface_init (ExampleEchoServiceIface *iface G_GNUC_UNUSED)
+echo_service_proxy_iface_init (EchoServiceIface *iface G_GNUC_UNUSED)
 {
 }
 
 /**
- * example_echo_service_proxy_new:
+ * echo_service_proxy_new:
  * @connection: A #GDBusConnection.
  * @flags: Flags from the #GDBusProxyFlags enumeration.
  * @name: (nullable): A bus name (well-known or unique) or %NULL if @connection is not a message bus connection.
@@ -712,15 +712,15 @@ example_echo_service_proxy_iface_init (ExampleEchoServiceIface *iface G_GNUC_UNU
  * @callback: A #GAsyncReadyCallback to call when the request is satisfied.
  * @user_data: User data to pass to @callback.
  *
- * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-example-EchoService.top_of_page">example.EchoService</link>. See g_dbus_proxy_new() for more details.
+ * Asynchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-ussur-wg-EchoService.top_of_page">ussur.wg.EchoService</link>. See g_dbus_proxy_new() for more details.
  *
  * When the operation is finished, @callback will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
- * You can then call example_echo_service_proxy_new_finish() to get the result of the operation.
+ * You can then call echo_service_proxy_new_finish() to get the result of the operation.
  *
- * See example_echo_service_proxy_new_sync() for the synchronous, blocking version of this constructor.
+ * See echo_service_proxy_new_sync() for the synchronous, blocking version of this constructor.
  */
 void
-example_echo_service_proxy_new (
+echo_service_proxy_new (
     GDBusConnection     *connection,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -729,20 +729,20 @@ example_echo_service_proxy_new (
     GAsyncReadyCallback  callback,
     gpointer             user_data)
 {
-  g_async_initable_new_async (TYPE_EXAMPLE_ECHO_SERVICE_PROXY, G_PRIORITY_DEFAULT, cancellable, callback, user_data, "g-flags", flags, "g-name", name, "g-connection", connection, "g-object-path", object_path, "g-interface-name", "example.EchoService", NULL);
+  g_async_initable_new_async (TYPE_ECHO_SERVICE_PROXY, G_PRIORITY_DEFAULT, cancellable, callback, user_data, "g-flags", flags, "g-name", name, "g-connection", connection, "g-object-path", object_path, "g-interface-name", "ussur.wg.EchoService", NULL);
 }
 
 /**
- * example_echo_service_proxy_new_finish:
- * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to example_echo_service_proxy_new().
+ * echo_service_proxy_new_finish:
+ * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to echo_service_proxy_new().
  * @error: Return location for error or %NULL
  *
- * Finishes an operation started with example_echo_service_proxy_new().
+ * Finishes an operation started with echo_service_proxy_new().
  *
- * Returns: (transfer full) (type ExampleEchoServiceProxy): The constructed proxy object or %NULL if @error is set.
+ * Returns: (transfer full) (type EchoServiceProxy): The constructed proxy object or %NULL if @error is set.
  */
-ExampleEchoService *
-example_echo_service_proxy_new_finish (
+EchoService *
+echo_service_proxy_new_finish (
     GAsyncResult        *res,
     GError             **error)
 {
@@ -752,13 +752,13 @@ example_echo_service_proxy_new_finish (
   ret = g_async_initable_new_finish (G_ASYNC_INITABLE (source_object), res, error);
   g_object_unref (source_object);
   if (ret != NULL)
-    return EXAMPLE_ECHO_SERVICE (ret);
+    return ECHO_SERVICE (ret);
   else
     return NULL;
 }
 
 /**
- * example_echo_service_proxy_new_sync:
+ * echo_service_proxy_new_sync:
  * @connection: A #GDBusConnection.
  * @flags: Flags from the #GDBusProxyFlags enumeration.
  * @name: (nullable): A bus name (well-known or unique) or %NULL if @connection is not a message bus connection.
@@ -766,16 +766,16 @@ example_echo_service_proxy_new_finish (
  * @cancellable: (nullable): A #GCancellable or %NULL.
  * @error: Return location for error or %NULL
  *
- * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-example-EchoService.top_of_page">example.EchoService</link>. See g_dbus_proxy_new_sync() for more details.
+ * Synchronously creates a proxy for the D-Bus interface <link linkend="gdbus-interface-ussur-wg-EchoService.top_of_page">ussur.wg.EchoService</link>. See g_dbus_proxy_new_sync() for more details.
  *
  * The calling thread is blocked until a reply is received.
  *
- * See example_echo_service_proxy_new() for the asynchronous version of this constructor.
+ * See echo_service_proxy_new() for the asynchronous version of this constructor.
  *
- * Returns: (transfer full) (type ExampleEchoServiceProxy): The constructed proxy object or %NULL if @error is set.
+ * Returns: (transfer full) (type EchoServiceProxy): The constructed proxy object or %NULL if @error is set.
  */
-ExampleEchoService *
-example_echo_service_proxy_new_sync (
+EchoService *
+echo_service_proxy_new_sync (
     GDBusConnection     *connection,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -784,16 +784,16 @@ example_echo_service_proxy_new_sync (
     GError             **error)
 {
   GInitable *ret;
-  ret = g_initable_new (TYPE_EXAMPLE_ECHO_SERVICE_PROXY, cancellable, error, "g-flags", flags, "g-name", name, "g-connection", connection, "g-object-path", object_path, "g-interface-name", "example.EchoService", NULL);
+  ret = g_initable_new (TYPE_ECHO_SERVICE_PROXY, cancellable, error, "g-flags", flags, "g-name", name, "g-connection", connection, "g-object-path", object_path, "g-interface-name", "ussur.wg.EchoService", NULL);
   if (ret != NULL)
-    return EXAMPLE_ECHO_SERVICE (ret);
+    return ECHO_SERVICE (ret);
   else
     return NULL;
 }
 
 
 /**
- * example_echo_service_proxy_new_for_bus:
+ * echo_service_proxy_new_for_bus:
  * @bus_type: A #GBusType.
  * @flags: Flags from the #GDBusProxyFlags enumeration.
  * @name: A bus name (well-known or unique).
@@ -802,15 +802,15 @@ example_echo_service_proxy_new_sync (
  * @callback: A #GAsyncReadyCallback to call when the request is satisfied.
  * @user_data: User data to pass to @callback.
  *
- * Like example_echo_service_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
+ * Like echo_service_proxy_new() but takes a #GBusType instead of a #GDBusConnection.
  *
  * When the operation is finished, @callback will be invoked in the thread-default main loop of the thread you are calling this method from (see g_main_context_push_thread_default()).
- * You can then call example_echo_service_proxy_new_for_bus_finish() to get the result of the operation.
+ * You can then call echo_service_proxy_new_for_bus_finish() to get the result of the operation.
  *
- * See example_echo_service_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
+ * See echo_service_proxy_new_for_bus_sync() for the synchronous, blocking version of this constructor.
  */
 void
-example_echo_service_proxy_new_for_bus (
+echo_service_proxy_new_for_bus (
     GBusType             bus_type,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -819,20 +819,20 @@ example_echo_service_proxy_new_for_bus (
     GAsyncReadyCallback  callback,
     gpointer             user_data)
 {
-  g_async_initable_new_async (TYPE_EXAMPLE_ECHO_SERVICE_PROXY, G_PRIORITY_DEFAULT, cancellable, callback, user_data, "g-flags", flags, "g-name", name, "g-bus-type", bus_type, "g-object-path", object_path, "g-interface-name", "example.EchoService", NULL);
+  g_async_initable_new_async (TYPE_ECHO_SERVICE_PROXY, G_PRIORITY_DEFAULT, cancellable, callback, user_data, "g-flags", flags, "g-name", name, "g-bus-type", bus_type, "g-object-path", object_path, "g-interface-name", "ussur.wg.EchoService", NULL);
 }
 
 /**
- * example_echo_service_proxy_new_for_bus_finish:
- * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to example_echo_service_proxy_new_for_bus().
+ * echo_service_proxy_new_for_bus_finish:
+ * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to echo_service_proxy_new_for_bus().
  * @error: Return location for error or %NULL
  *
- * Finishes an operation started with example_echo_service_proxy_new_for_bus().
+ * Finishes an operation started with echo_service_proxy_new_for_bus().
  *
- * Returns: (transfer full) (type ExampleEchoServiceProxy): The constructed proxy object or %NULL if @error is set.
+ * Returns: (transfer full) (type EchoServiceProxy): The constructed proxy object or %NULL if @error is set.
  */
-ExampleEchoService *
-example_echo_service_proxy_new_for_bus_finish (
+EchoService *
+echo_service_proxy_new_for_bus_finish (
     GAsyncResult        *res,
     GError             **error)
 {
@@ -842,13 +842,13 @@ example_echo_service_proxy_new_for_bus_finish (
   ret = g_async_initable_new_finish (G_ASYNC_INITABLE (source_object), res, error);
   g_object_unref (source_object);
   if (ret != NULL)
-    return EXAMPLE_ECHO_SERVICE (ret);
+    return ECHO_SERVICE (ret);
   else
     return NULL;
 }
 
 /**
- * example_echo_service_proxy_new_for_bus_sync:
+ * echo_service_proxy_new_for_bus_sync:
  * @bus_type: A #GBusType.
  * @flags: Flags from the #GDBusProxyFlags enumeration.
  * @name: A bus name (well-known or unique).
@@ -856,16 +856,16 @@ example_echo_service_proxy_new_for_bus_finish (
  * @cancellable: (nullable): A #GCancellable or %NULL.
  * @error: Return location for error or %NULL
  *
- * Like example_echo_service_proxy_new_sync() but takes a #GBusType instead of a #GDBusConnection.
+ * Like echo_service_proxy_new_sync() but takes a #GBusType instead of a #GDBusConnection.
  *
  * The calling thread is blocked until a reply is received.
  *
- * See example_echo_service_proxy_new_for_bus() for the asynchronous version of this constructor.
+ * See echo_service_proxy_new_for_bus() for the asynchronous version of this constructor.
  *
- * Returns: (transfer full) (type ExampleEchoServiceProxy): The constructed proxy object or %NULL if @error is set.
+ * Returns: (transfer full) (type EchoServiceProxy): The constructed proxy object or %NULL if @error is set.
  */
-ExampleEchoService *
-example_echo_service_proxy_new_for_bus_sync (
+EchoService *
+echo_service_proxy_new_for_bus_sync (
     GBusType             bus_type,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -874,9 +874,9 @@ example_echo_service_proxy_new_for_bus_sync (
     GError             **error)
 {
   GInitable *ret;
-  ret = g_initable_new (TYPE_EXAMPLE_ECHO_SERVICE_PROXY, cancellable, error, "g-flags", flags, "g-name", name, "g-bus-type", bus_type, "g-object-path", object_path, "g-interface-name", "example.EchoService", NULL);
+  ret = g_initable_new (TYPE_ECHO_SERVICE_PROXY, cancellable, error, "g-flags", flags, "g-name", name, "g-bus-type", bus_type, "g-object-path", object_path, "g-interface-name", "ussur.wg.EchoService", NULL);
   if (ret != NULL)
-    return EXAMPLE_ECHO_SERVICE (ret);
+    return ECHO_SERVICE (ret);
   else
     return NULL;
 }
@@ -885,19 +885,19 @@ example_echo_service_proxy_new_for_bus_sync (
 /* ------------------------------------------------------------------------ */
 
 /**
- * ExampleEchoServiceSkeleton:
+ * EchoServiceSkeleton:
  *
- * The #ExampleEchoServiceSkeleton structure contains only private data and should only be accessed using the provided API.
+ * The #EchoServiceSkeleton structure contains only private data and should only be accessed using the provided API.
  */
 
 /**
- * ExampleEchoServiceSkeletonClass:
+ * EchoServiceSkeletonClass:
  * @parent_class: The parent class.
  *
- * Class structure for #ExampleEchoServiceSkeleton.
+ * Class structure for #EchoServiceSkeleton.
  */
 
-struct _ExampleEchoServiceSkeletonPrivate
+struct _EchoServiceSkeletonPrivate
 {
   GValue *properties;
   GList *changed_properties;
@@ -907,7 +907,7 @@ struct _ExampleEchoServiceSkeletonPrivate
 };
 
 static void
-_example_echo_service_skeleton_handle_method_call (
+_echo_service_skeleton_handle_method_call (
   GDBusConnection *connection G_GNUC_UNUSED,
   const gchar *sender G_GNUC_UNUSED,
   const gchar *object_path G_GNUC_UNUSED,
@@ -917,7 +917,7 @@ _example_echo_service_skeleton_handle_method_call (
   GDBusMethodInvocation *invocation,
   gpointer user_data)
 {
-  ExampleEchoServiceSkeleton *skeleton = EXAMPLE_ECHO_SERVICE_SKELETON (user_data);
+  EchoServiceSkeleton *skeleton = ECHO_SERVICE_SKELETON (user_data);
   _ExtendedGDBusMethodInfo *info;
   GVariantIter iter;
   GVariant *child;
@@ -932,7 +932,7 @@ _example_echo_service_skeleton_handle_method_call (
   num_params = g_variant_n_children (parameters);
   num_extra = info->pass_fdlist ? 3 : 2;  paramv = g_new0 (GValue, num_params + num_extra);
   n = 0;
-  g_value_init (&paramv[n], TYPE_EXAMPLE_ECHO_SERVICE);
+  g_value_init (&paramv[n], TYPE_ECHO_SERVICE);
   g_value_set_object (&paramv[n++], skeleton);
   g_value_init (&paramv[n], G_TYPE_DBUS_METHOD_INVOCATION);
   g_value_set_object (&paramv[n++], invocation);
@@ -959,7 +959,7 @@ _example_echo_service_skeleton_handle_method_call (
         g_dbus_gvariant_to_gvalue (child, &paramv[n++]);
       g_variant_unref (child);
     }
-  signal_id = g_signal_lookup (info->signal_name, TYPE_EXAMPLE_ECHO_SERVICE);
+  signal_id = g_signal_lookup (info->signal_name, TYPE_ECHO_SERVICE);
   g_value_init (&return_value, G_TYPE_BOOLEAN);
   g_signal_emitv (paramv, signal_id, 0, &return_value);
   if (!g_value_get_boolean (&return_value))
@@ -971,7 +971,7 @@ _example_echo_service_skeleton_handle_method_call (
 }
 
 static GVariant *
-_example_echo_service_skeleton_handle_get_property (
+_echo_service_skeleton_handle_get_property (
   GDBusConnection *connection G_GNUC_UNUSED,
   const gchar *sender G_GNUC_UNUSED,
   const gchar *object_path G_GNUC_UNUSED,
@@ -980,13 +980,13 @@ _example_echo_service_skeleton_handle_get_property (
   GError **error,
   gpointer user_data)
 {
-  ExampleEchoServiceSkeleton *skeleton = EXAMPLE_ECHO_SERVICE_SKELETON (user_data);
+  EchoServiceSkeleton *skeleton = ECHO_SERVICE_SKELETON (user_data);
   GValue value = G_VALUE_INIT;
   GParamSpec *pspec;
   _ExtendedGDBusPropertyInfo *info;
   GVariant *ret;
   ret = NULL;
-  info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_example_echo_service_interface_info.parent_struct, property_name);
+  info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_echo_service_interface_info.parent_struct, property_name);
   g_assert (info != NULL);
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (skeleton), info->hyphen_name);
   if (pspec == NULL)
@@ -1004,7 +1004,7 @@ _example_echo_service_skeleton_handle_get_property (
 }
 
 static gboolean
-_example_echo_service_skeleton_handle_set_property (
+_echo_service_skeleton_handle_set_property (
   GDBusConnection *connection G_GNUC_UNUSED,
   const gchar *sender G_GNUC_UNUSED,
   const gchar *object_path G_GNUC_UNUSED,
@@ -1014,13 +1014,13 @@ _example_echo_service_skeleton_handle_set_property (
   GError **error,
   gpointer user_data)
 {
-  ExampleEchoServiceSkeleton *skeleton = EXAMPLE_ECHO_SERVICE_SKELETON (user_data);
+  EchoServiceSkeleton *skeleton = ECHO_SERVICE_SKELETON (user_data);
   GValue value = G_VALUE_INIT;
   GParamSpec *pspec;
   _ExtendedGDBusPropertyInfo *info;
   gboolean ret;
   ret = FALSE;
-  info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_example_echo_service_interface_info.parent_struct, property_name);
+  info = (_ExtendedGDBusPropertyInfo *) g_dbus_interface_info_lookup_property ((GDBusInterfaceInfo *) &_echo_service_interface_info.parent_struct, property_name);
   g_assert (info != NULL);
   pspec = g_object_class_find_property (G_OBJECT_GET_CLASS (skeleton), info->hyphen_name);
   if (pspec == NULL)
@@ -1040,43 +1040,43 @@ _example_echo_service_skeleton_handle_set_property (
   return ret;
 }
 
-static const GDBusInterfaceVTable _example_echo_service_skeleton_vtable =
+static const GDBusInterfaceVTable _echo_service_skeleton_vtable =
 {
-  _example_echo_service_skeleton_handle_method_call,
-  _example_echo_service_skeleton_handle_get_property,
-  _example_echo_service_skeleton_handle_set_property,
+  _echo_service_skeleton_handle_method_call,
+  _echo_service_skeleton_handle_get_property,
+  _echo_service_skeleton_handle_set_property,
   {NULL}
 };
 
 static GDBusInterfaceInfo *
-example_echo_service_skeleton_dbus_interface_get_info (GDBusInterfaceSkeleton *skeleton G_GNUC_UNUSED)
+echo_service_skeleton_dbus_interface_get_info (GDBusInterfaceSkeleton *skeleton G_GNUC_UNUSED)
 {
-  return example_echo_service_interface_info ();
+  return echo_service_interface_info ();
 }
 
 static GDBusInterfaceVTable *
-example_echo_service_skeleton_dbus_interface_get_vtable (GDBusInterfaceSkeleton *skeleton G_GNUC_UNUSED)
+echo_service_skeleton_dbus_interface_get_vtable (GDBusInterfaceSkeleton *skeleton G_GNUC_UNUSED)
 {
-  return (GDBusInterfaceVTable *) &_example_echo_service_skeleton_vtable;
+  return (GDBusInterfaceVTable *) &_echo_service_skeleton_vtable;
 }
 
 static GVariant *
-example_echo_service_skeleton_dbus_interface_get_properties (GDBusInterfaceSkeleton *_skeleton)
+echo_service_skeleton_dbus_interface_get_properties (GDBusInterfaceSkeleton *_skeleton)
 {
-  ExampleEchoServiceSkeleton *skeleton = EXAMPLE_ECHO_SERVICE_SKELETON (_skeleton);
+  EchoServiceSkeleton *skeleton = ECHO_SERVICE_SKELETON (_skeleton);
 
   GVariantBuilder builder;
   guint n;
   g_variant_builder_init (&builder, G_VARIANT_TYPE ("a{sv}"));
-  if (_example_echo_service_interface_info.parent_struct.properties == NULL)
+  if (_echo_service_interface_info.parent_struct.properties == NULL)
     goto out;
-  for (n = 0; _example_echo_service_interface_info.parent_struct.properties[n] != NULL; n++)
+  for (n = 0; _echo_service_interface_info.parent_struct.properties[n] != NULL; n++)
     {
-      GDBusPropertyInfo *info = _example_echo_service_interface_info.parent_struct.properties[n];
+      GDBusPropertyInfo *info = _echo_service_interface_info.parent_struct.properties[n];
       if (info->flags & G_DBUS_PROPERTY_INFO_FLAGS_READABLE)
         {
           GVariant *value;
-          value = _example_echo_service_skeleton_handle_get_property (g_dbus_interface_skeleton_get_connection (G_DBUS_INTERFACE_SKELETON (skeleton)), NULL, g_dbus_interface_skeleton_get_object_path (G_DBUS_INTERFACE_SKELETON (skeleton)), "example.EchoService", info->name, NULL, skeleton);
+          value = _echo_service_skeleton_handle_get_property (g_dbus_interface_skeleton_get_connection (G_DBUS_INTERFACE_SKELETON (skeleton)), NULL, g_dbus_interface_skeleton_get_object_path (G_DBUS_INTERFACE_SKELETON (skeleton)), "ussur.wg.EchoService", info->name, NULL, skeleton);
           if (value != NULL)
             {
               g_variant_take_ref (value);
@@ -1090,40 +1090,40 @@ out:
 }
 
 static void
-example_echo_service_skeleton_dbus_interface_flush (GDBusInterfaceSkeleton *_skeleton G_GNUC_UNUSED)
+echo_service_skeleton_dbus_interface_flush (GDBusInterfaceSkeleton *_skeleton G_GNUC_UNUSED)
 {
 }
 
-static void example_echo_service_skeleton_iface_init (ExampleEchoServiceIface *iface);
+static void echo_service_skeleton_iface_init (EchoServiceIface *iface);
 #if GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_38
-G_DEFINE_TYPE_WITH_CODE (ExampleEchoServiceSkeleton, example_echo_service_skeleton, G_TYPE_DBUS_INTERFACE_SKELETON,
-                         G_ADD_PRIVATE (ExampleEchoServiceSkeleton)
-                         G_IMPLEMENT_INTERFACE (TYPE_EXAMPLE_ECHO_SERVICE, example_echo_service_skeleton_iface_init))
+G_DEFINE_TYPE_WITH_CODE (EchoServiceSkeleton, echo_service_skeleton, G_TYPE_DBUS_INTERFACE_SKELETON,
+                         G_ADD_PRIVATE (EchoServiceSkeleton)
+                         G_IMPLEMENT_INTERFACE (TYPE_ECHO_SERVICE, echo_service_skeleton_iface_init))
 
 #else
-G_DEFINE_TYPE_WITH_CODE (ExampleEchoServiceSkeleton, example_echo_service_skeleton, G_TYPE_DBUS_INTERFACE_SKELETON,
-                         G_IMPLEMENT_INTERFACE (TYPE_EXAMPLE_ECHO_SERVICE, example_echo_service_skeleton_iface_init))
+G_DEFINE_TYPE_WITH_CODE (EchoServiceSkeleton, echo_service_skeleton, G_TYPE_DBUS_INTERFACE_SKELETON,
+                         G_IMPLEMENT_INTERFACE (TYPE_ECHO_SERVICE, echo_service_skeleton_iface_init))
 
 #endif
 static void
-example_echo_service_skeleton_finalize (GObject *object)
+echo_service_skeleton_finalize (GObject *object)
 {
-  ExampleEchoServiceSkeleton *skeleton = EXAMPLE_ECHO_SERVICE_SKELETON (object);
+  EchoServiceSkeleton *skeleton = ECHO_SERVICE_SKELETON (object);
   g_list_free_full (skeleton->priv->changed_properties, (GDestroyNotify) _changed_property_free);
   if (skeleton->priv->changed_properties_idle_source != NULL)
     g_source_destroy (skeleton->priv->changed_properties_idle_source);
   g_main_context_unref (skeleton->priv->context);
   g_mutex_clear (&skeleton->priv->lock);
-  G_OBJECT_CLASS (example_echo_service_skeleton_parent_class)->finalize (object);
+  G_OBJECT_CLASS (echo_service_skeleton_parent_class)->finalize (object);
 }
 
 static void
-example_echo_service_skeleton_init (ExampleEchoServiceSkeleton *skeleton)
+echo_service_skeleton_init (EchoServiceSkeleton *skeleton)
 {
 #if GLIB_VERSION_MAX_ALLOWED >= GLIB_VERSION_2_38
-  skeleton->priv = example_echo_service_skeleton_get_instance_private (skeleton);
+  skeleton->priv = echo_service_skeleton_get_instance_private (skeleton);
 #else
-  skeleton->priv = G_TYPE_INSTANCE_GET_PRIVATE (skeleton, TYPE_EXAMPLE_ECHO_SERVICE_SKELETON, ExampleEchoServiceSkeletonPrivate);
+  skeleton->priv = G_TYPE_INSTANCE_GET_PRIVATE (skeleton, TYPE_ECHO_SERVICE_SKELETON, EchoServiceSkeletonPrivate);
 #endif
 
   g_mutex_init (&skeleton->priv->lock);
@@ -1131,40 +1131,40 @@ example_echo_service_skeleton_init (ExampleEchoServiceSkeleton *skeleton)
 }
 
 static void
-example_echo_service_skeleton_class_init (ExampleEchoServiceSkeletonClass *klass)
+echo_service_skeleton_class_init (EchoServiceSkeletonClass *klass)
 {
   GObjectClass *gobject_class;
   GDBusInterfaceSkeletonClass *skeleton_class;
 
   gobject_class = G_OBJECT_CLASS (klass);
-  gobject_class->finalize = example_echo_service_skeleton_finalize;
+  gobject_class->finalize = echo_service_skeleton_finalize;
 
   skeleton_class = G_DBUS_INTERFACE_SKELETON_CLASS (klass);
-  skeleton_class->get_info = example_echo_service_skeleton_dbus_interface_get_info;
-  skeleton_class->get_properties = example_echo_service_skeleton_dbus_interface_get_properties;
-  skeleton_class->flush = example_echo_service_skeleton_dbus_interface_flush;
-  skeleton_class->get_vtable = example_echo_service_skeleton_dbus_interface_get_vtable;
+  skeleton_class->get_info = echo_service_skeleton_dbus_interface_get_info;
+  skeleton_class->get_properties = echo_service_skeleton_dbus_interface_get_properties;
+  skeleton_class->flush = echo_service_skeleton_dbus_interface_flush;
+  skeleton_class->get_vtable = echo_service_skeleton_dbus_interface_get_vtable;
 
 #if GLIB_VERSION_MAX_ALLOWED < GLIB_VERSION_2_38
-  g_type_class_add_private (klass, sizeof (ExampleEchoServiceSkeletonPrivate));
+  g_type_class_add_private (klass, sizeof (EchoServiceSkeletonPrivate));
 #endif
 }
 
 static void
-example_echo_service_skeleton_iface_init (ExampleEchoServiceIface *iface G_GNUC_UNUSED)
+echo_service_skeleton_iface_init (EchoServiceIface *iface G_GNUC_UNUSED)
 {
 }
 
 /**
- * example_echo_service_skeleton_new:
+ * echo_service_skeleton_new:
  *
- * Creates a skeleton object for the D-Bus interface <link linkend="gdbus-interface-example-EchoService.top_of_page">example.EchoService</link>.
+ * Creates a skeleton object for the D-Bus interface <link linkend="gdbus-interface-ussur-wg-EchoService.top_of_page">ussur.wg.EchoService</link>.
  *
- * Returns: (transfer full) (type ExampleEchoServiceSkeleton): The skeleton object.
+ * Returns: (transfer full) (type EchoServiceSkeleton): The skeleton object.
  */
-ExampleEchoService *
-example_echo_service_skeleton_new (void)
+EchoService *
+echo_service_skeleton_new (void)
 {
-  return EXAMPLE_ECHO_SERVICE (g_object_new (TYPE_EXAMPLE_ECHO_SERVICE_SKELETON, NULL));
+  return ECHO_SERVICE (g_object_new (TYPE_ECHO_SERVICE_SKELETON, NULL));
 }
 

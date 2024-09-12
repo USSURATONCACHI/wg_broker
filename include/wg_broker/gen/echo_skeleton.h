@@ -15,58 +15,58 @@ G_BEGIN_DECLS
 
 
 /* ------------------------------------------------------------------------ */
-/* Declarations for example.EchoService */
+/* Declarations for ussur.wg.EchoService */
 
-#define TYPE_EXAMPLE_ECHO_SERVICE (example_echo_service_get_type ())
-#define EXAMPLE_ECHO_SERVICE(o) (G_TYPE_CHECK_INSTANCE_CAST ((o), TYPE_EXAMPLE_ECHO_SERVICE, ExampleEchoService))
-#define IS_EXAMPLE_ECHO_SERVICE(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), TYPE_EXAMPLE_ECHO_SERVICE))
-#define EXAMPLE_ECHO_SERVICE_GET_IFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE ((o), TYPE_EXAMPLE_ECHO_SERVICE, ExampleEchoServiceIface))
+#define TYPE_ECHO_SERVICE (echo_service_get_type ())
+#define ECHO_SERVICE(o) (G_TYPE_CHECK_INSTANCE_CAST ((o), TYPE_ECHO_SERVICE, EchoService))
+#define IS_ECHO_SERVICE(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), TYPE_ECHO_SERVICE))
+#define ECHO_SERVICE_GET_IFACE(o) (G_TYPE_INSTANCE_GET_INTERFACE ((o), TYPE_ECHO_SERVICE, EchoServiceIface))
 
-struct _ExampleEchoService;
-typedef struct _ExampleEchoService ExampleEchoService;
-typedef struct _ExampleEchoServiceIface ExampleEchoServiceIface;
+struct _EchoService;
+typedef struct _EchoService EchoService;
+typedef struct _EchoServiceIface EchoServiceIface;
 
-struct _ExampleEchoServiceIface
+struct _EchoServiceIface
 {
   GTypeInterface parent_iface;
 
   gboolean (*handle_echo) (
-    ExampleEchoService *object,
+    EchoService *object,
     GDBusMethodInvocation *invocation,
     const gchar *arg_input);
 
 };
 
-GType example_echo_service_get_type (void) G_GNUC_CONST;
+GType echo_service_get_type (void) G_GNUC_CONST;
 
-GDBusInterfaceInfo *example_echo_service_interface_info (void);
-guint example_echo_service_override_properties (GObjectClass *klass, guint property_id_begin);
+GDBusInterfaceInfo *echo_service_interface_info (void);
+guint echo_service_override_properties (GObjectClass *klass, guint property_id_begin);
 
 
 /* D-Bus method call completion functions: */
-void example_echo_service_complete_echo (
-    ExampleEchoService *object,
+void echo_service_complete_echo (
+    EchoService *object,
     GDBusMethodInvocation *invocation,
     const gchar *output);
 
 
 
 /* D-Bus method calls: */
-void example_echo_service_call_echo (
-    ExampleEchoService *proxy,
+void echo_service_call_echo (
+    EchoService *proxy,
     const gchar *arg_input,
     GCancellable *cancellable,
     GAsyncReadyCallback callback,
     gpointer user_data);
 
-gboolean example_echo_service_call_echo_finish (
-    ExampleEchoService *proxy,
+gboolean echo_service_call_echo_finish (
+    EchoService *proxy,
     gchar **out_output,
     GAsyncResult *res,
     GError **error);
 
-gboolean example_echo_service_call_echo_sync (
-    ExampleEchoService *proxy,
+gboolean echo_service_call_echo_sync (
+    EchoService *proxy,
     const gchar *arg_input,
     gchar **out_output,
     GCancellable *cancellable,
@@ -76,36 +76,36 @@ gboolean example_echo_service_call_echo_sync (
 
 /* ---- */
 
-#define TYPE_EXAMPLE_ECHO_SERVICE_PROXY (example_echo_service_proxy_get_type ())
-#define EXAMPLE_ECHO_SERVICE_PROXY(o) (G_TYPE_CHECK_INSTANCE_CAST ((o), TYPE_EXAMPLE_ECHO_SERVICE_PROXY, ExampleEchoServiceProxy))
-#define EXAMPLE_ECHO_SERVICE_PROXY_CLASS(k) (G_TYPE_CHECK_CLASS_CAST ((k), TYPE_EXAMPLE_ECHO_SERVICE_PROXY, ExampleEchoServiceProxyClass))
-#define EXAMPLE_ECHO_SERVICE_PROXY_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), TYPE_EXAMPLE_ECHO_SERVICE_PROXY, ExampleEchoServiceProxyClass))
-#define IS_EXAMPLE_ECHO_SERVICE_PROXY(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), TYPE_EXAMPLE_ECHO_SERVICE_PROXY))
-#define IS_EXAMPLE_ECHO_SERVICE_PROXY_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), TYPE_EXAMPLE_ECHO_SERVICE_PROXY))
+#define TYPE_ECHO_SERVICE_PROXY (echo_service_proxy_get_type ())
+#define ECHO_SERVICE_PROXY(o) (G_TYPE_CHECK_INSTANCE_CAST ((o), TYPE_ECHO_SERVICE_PROXY, EchoServiceProxy))
+#define ECHO_SERVICE_PROXY_CLASS(k) (G_TYPE_CHECK_CLASS_CAST ((k), TYPE_ECHO_SERVICE_PROXY, EchoServiceProxyClass))
+#define ECHO_SERVICE_PROXY_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), TYPE_ECHO_SERVICE_PROXY, EchoServiceProxyClass))
+#define IS_ECHO_SERVICE_PROXY(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), TYPE_ECHO_SERVICE_PROXY))
+#define IS_ECHO_SERVICE_PROXY_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), TYPE_ECHO_SERVICE_PROXY))
 
-typedef struct _ExampleEchoServiceProxy ExampleEchoServiceProxy;
-typedef struct _ExampleEchoServiceProxyClass ExampleEchoServiceProxyClass;
-typedef struct _ExampleEchoServiceProxyPrivate ExampleEchoServiceProxyPrivate;
+typedef struct _EchoServiceProxy EchoServiceProxy;
+typedef struct _EchoServiceProxyClass EchoServiceProxyClass;
+typedef struct _EchoServiceProxyPrivate EchoServiceProxyPrivate;
 
-struct _ExampleEchoServiceProxy
+struct _EchoServiceProxy
 {
   /*< private >*/
   GDBusProxy parent_instance;
-  ExampleEchoServiceProxyPrivate *priv;
+  EchoServiceProxyPrivate *priv;
 };
 
-struct _ExampleEchoServiceProxyClass
+struct _EchoServiceProxyClass
 {
   GDBusProxyClass parent_class;
 };
 
-GType example_echo_service_proxy_get_type (void) G_GNUC_CONST;
+GType echo_service_proxy_get_type (void) G_GNUC_CONST;
 
 #if GLIB_CHECK_VERSION(2, 44, 0)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (ExampleEchoServiceProxy, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (EchoServiceProxy, g_object_unref)
 #endif
 
-void example_echo_service_proxy_new (
+void echo_service_proxy_new (
     GDBusConnection     *connection,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -113,10 +113,10 @@ void example_echo_service_proxy_new (
     GCancellable        *cancellable,
     GAsyncReadyCallback  callback,
     gpointer             user_data);
-ExampleEchoService *example_echo_service_proxy_new_finish (
+EchoService *echo_service_proxy_new_finish (
     GAsyncResult        *res,
     GError             **error);
-ExampleEchoService *example_echo_service_proxy_new_sync (
+EchoService *echo_service_proxy_new_sync (
     GDBusConnection     *connection,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -124,7 +124,7 @@ ExampleEchoService *example_echo_service_proxy_new_sync (
     GCancellable        *cancellable,
     GError             **error);
 
-void example_echo_service_proxy_new_for_bus (
+void echo_service_proxy_new_for_bus (
     GBusType             bus_type,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -132,10 +132,10 @@ void example_echo_service_proxy_new_for_bus (
     GCancellable        *cancellable,
     GAsyncReadyCallback  callback,
     gpointer             user_data);
-ExampleEchoService *example_echo_service_proxy_new_for_bus_finish (
+EchoService *echo_service_proxy_new_for_bus_finish (
     GAsyncResult        *res,
     GError             **error);
-ExampleEchoService *example_echo_service_proxy_new_for_bus_sync (
+EchoService *echo_service_proxy_new_for_bus_sync (
     GBusType             bus_type,
     GDBusProxyFlags      flags,
     const gchar         *name,
@@ -146,36 +146,36 @@ ExampleEchoService *example_echo_service_proxy_new_for_bus_sync (
 
 /* ---- */
 
-#define TYPE_EXAMPLE_ECHO_SERVICE_SKELETON (example_echo_service_skeleton_get_type ())
-#define EXAMPLE_ECHO_SERVICE_SKELETON(o) (G_TYPE_CHECK_INSTANCE_CAST ((o), TYPE_EXAMPLE_ECHO_SERVICE_SKELETON, ExampleEchoServiceSkeleton))
-#define EXAMPLE_ECHO_SERVICE_SKELETON_CLASS(k) (G_TYPE_CHECK_CLASS_CAST ((k), TYPE_EXAMPLE_ECHO_SERVICE_SKELETON, ExampleEchoServiceSkeletonClass))
-#define EXAMPLE_ECHO_SERVICE_SKELETON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), TYPE_EXAMPLE_ECHO_SERVICE_SKELETON, ExampleEchoServiceSkeletonClass))
-#define IS_EXAMPLE_ECHO_SERVICE_SKELETON(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), TYPE_EXAMPLE_ECHO_SERVICE_SKELETON))
-#define IS_EXAMPLE_ECHO_SERVICE_SKELETON_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), TYPE_EXAMPLE_ECHO_SERVICE_SKELETON))
+#define TYPE_ECHO_SERVICE_SKELETON (echo_service_skeleton_get_type ())
+#define ECHO_SERVICE_SKELETON(o) (G_TYPE_CHECK_INSTANCE_CAST ((o), TYPE_ECHO_SERVICE_SKELETON, EchoServiceSkeleton))
+#define ECHO_SERVICE_SKELETON_CLASS(k) (G_TYPE_CHECK_CLASS_CAST ((k), TYPE_ECHO_SERVICE_SKELETON, EchoServiceSkeletonClass))
+#define ECHO_SERVICE_SKELETON_GET_CLASS(o) (G_TYPE_INSTANCE_GET_CLASS ((o), TYPE_ECHO_SERVICE_SKELETON, EchoServiceSkeletonClass))
+#define IS_ECHO_SERVICE_SKELETON(o) (G_TYPE_CHECK_INSTANCE_TYPE ((o), TYPE_ECHO_SERVICE_SKELETON))
+#define IS_ECHO_SERVICE_SKELETON_CLASS(k) (G_TYPE_CHECK_CLASS_TYPE ((k), TYPE_ECHO_SERVICE_SKELETON))
 
-typedef struct _ExampleEchoServiceSkeleton ExampleEchoServiceSkeleton;
-typedef struct _ExampleEchoServiceSkeletonClass ExampleEchoServiceSkeletonClass;
-typedef struct _ExampleEchoServiceSkeletonPrivate ExampleEchoServiceSkeletonPrivate;
+typedef struct _EchoServiceSkeleton EchoServiceSkeleton;
+typedef struct _EchoServiceSkeletonClass EchoServiceSkeletonClass;
+typedef struct _EchoServiceSkeletonPrivate EchoServiceSkeletonPrivate;
 
-struct _ExampleEchoServiceSkeleton
+struct _EchoServiceSkeleton
 {
   /*< private >*/
   GDBusInterfaceSkeleton parent_instance;
-  ExampleEchoServiceSkeletonPrivate *priv;
+  EchoServiceSkeletonPrivate *priv;
 };
 
-struct _ExampleEchoServiceSkeletonClass
+struct _EchoServiceSkeletonClass
 {
   GDBusInterfaceSkeletonClass parent_class;
 };
 
-GType example_echo_service_skeleton_get_type (void) G_GNUC_CONST;
+GType echo_service_skeleton_get_type (void) G_GNUC_CONST;
 
 #if GLIB_CHECK_VERSION(2, 44, 0)
-G_DEFINE_AUTOPTR_CLEANUP_FUNC (ExampleEchoServiceSkeleton, g_object_unref)
+G_DEFINE_AUTOPTR_CLEANUP_FUNC (EchoServiceSkeleton, g_object_unref)
 #endif
 
-ExampleEchoService *example_echo_service_skeleton_new (void);
+EchoService *echo_service_skeleton_new (void);
 
 
 G_END_DECLS

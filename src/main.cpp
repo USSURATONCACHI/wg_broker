@@ -1,3 +1,4 @@
+#include "echo_skeleton.h"
 #include "glib.h"
 #include <iostream>
 #include <string>
@@ -8,7 +9,7 @@
 #include <wg_broker/owned_bus_name.hpp>
 #include <wg_broker/owned_ptr.hpp>
 #include <wg_broker/echo_skeleton.hpp>
-#include <wg_broker/echo_service.hpp>
+#include <wg_broker/echo_service_impl.hpp>
 
 // extern "C" {
 //     #include <wg_broker/gen/echo_skeleton.h>
@@ -16,6 +17,7 @@
 
 using ussur::wg::OwnedPtr;
 using ussur::wg::OwnedBusName;
+using ussur::wg::EchoServiceImpl;
 
 static OwnedPtr<GMainLoop> create_main_loop();
 
@@ -34,13 +36,13 @@ int main() {
     OwnedPtr<GMainLoop> loop = create_main_loop();
     std::cout << "Main loop created: " << loop.get() << std::endl;
     
-    ussur::wg::EchoService service;
-    std::function<void(ExampleEchoService*)> connector = 
-        [&service](ExampleEchoService* s) { 
+    EchoServiceImpl service;
+    std::function<void(EchoService*)> connector = 
+        [&service](EchoService* s) { 
             service.connect_skeleton_signals(s); 
         };
 
-    OwnedPtr<ExampleEchoService> skeleton = ussur::wg::create_skeleton(connection.get(), OBJ_NAME_STRING, connector);
+    OwnedPtr<EchoService> skeleton = ussur::wg::create_skeleton(connection.get(), OBJ_NAME_STRING, connector);
     std::cout << "Skeleton created: " << skeleton.get() << std::endl;
 
     g_main_loop_run(loop.get());

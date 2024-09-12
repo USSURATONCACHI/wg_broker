@@ -15,10 +15,10 @@ namespace ussur {
 namespace wg {
 
 
-OwnedPtr<ExampleEchoService> create_skeleton(
+OwnedPtr<EchoService> create_skeleton(
     GDBusConnection* connection, 
     const std::string& object_path,
-    std::function<void(ExampleEchoService*)> callback_signal_connect
+    std::function<void(EchoService*)> callback_signal_connect
 );
 
 

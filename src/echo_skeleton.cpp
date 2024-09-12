@@ -12,15 +12,14 @@
 namespace ussur {
 namespace wg {
 
-static void destruct_broker_skeleton(ExampleEchoService* skeleton);
+static void destruct_broker_skeleton(EchoService* skeleton);
 
-
-OwnedPtr<ExampleEchoService> create_skeleton(
+OwnedPtr<EchoService> create_skeleton(
     GDBusConnection* connection, 
     const std::string& object_path,
-    std::function<void(ExampleEchoService*)> callback_signal_connect
+    std::function<void(EchoService*)> callback_signal_connect
 ) {
-    ExampleEchoService* skeleton = example_echo_service_skeleton_new();
+    EchoService* skeleton = echo_service_skeleton_new();
 
     // if (callback_signal_connect)
     //     (*callback_signal_connect)(skeleton);
@@ -44,10 +43,10 @@ OwnedPtr<ExampleEchoService> create_skeleton(
     // Print some info for debugging purposes
     std::cout << "Exported an echo skeleton to object path: " << object_path <<  std::endl;
 
-    return OwnedPtr<ExampleEchoService>(skeleton, destruct_broker_skeleton);
+    return OwnedPtr<EchoService>(skeleton, destruct_broker_skeleton);
 }
 
-static void destruct_broker_skeleton(ExampleEchoService* skeleton) {
+static void destruct_broker_skeleton(EchoService* skeleton) {
     if (skeleton) {
         g_dbus_interface_skeleton_unexport(G_DBUS_INTERFACE_SKELETON(skeleton));
         g_object_unref(skeleton);
