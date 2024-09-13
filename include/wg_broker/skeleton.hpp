@@ -53,7 +53,7 @@ OwnedPtr<T> create_skeleton(
     }
     
     // Print some info for debugging purposes
-    std::cout << "Exported an echo skeleton to object path: " << object_path <<  std::endl;
+    std::cout << "Exported a skeleton to object path: " << object_path <<  std::endl;
 
     return OwnedPtr<T>(skeleton, destruct_skeleton);
 }

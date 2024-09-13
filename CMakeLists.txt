@@ -34,3 +34,8 @@ add_executable(wg_broker
 target_include_directories(wg_broker PUBLIC include)
 target_include_directories(wg_broker PUBLIC ${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS} ${TOML_INCLUDE_DIRS})
 target_link_libraries(wg_broker generated ${GLIB_LIBRARIES} ${GIO_LIBRARIES} ${TOML_LIBRARIES})
+
+# Check if you're using GCC version less than 9 and link stdc++fs
+if (CMAKE_CXX_COMPILER_ID STREQUAL "GNU" AND CMAKE_CXX_COMPILER_VERSION VERSION_LESS 9.0)
+    target_link_libraries(wg_broker stdc++fs)
+endif()

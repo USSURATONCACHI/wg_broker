@@ -1,5 +1,7 @@
 #pragma once
 
+#include <memory>
+
 #include <gio/gio.h>
 
 #include <wg_broker/owned_ptr.hpp>
@@ -17,8 +19,8 @@ struct WholeApp {
     OwnedBusName bus_name;
     OwnedPtr<GMainLoop> loop;
 
-    BrokerServiceImpl broker_service;
-    EchoServiceImpl echo_service;
+    std::unique_ptr<BrokerServiceImpl> broker_service;
+    std::unique_ptr<EchoServiceImpl> echo_service;
 
     OwnedPtr<ussur::wg::BrokerSkeleton> broker_skeleton;
     OwnedPtr<ussur::wg::EchoSkeleton> echo_skeleton;

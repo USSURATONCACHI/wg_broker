@@ -19,6 +19,15 @@ public:
     virtual OwnedPtr<ServiceType> create_skeleton(GDBusConnection* conn, const std::string& object_name) {
         return ussur::wg::create_skeleton<ServiceType>(conn, object_name.c_str(), get_create_skeleton_info());
     }
+
+    // non-movable and non-copyable, since we pass `this` pointer to glib callbacks
+    BaseService() {}
+
+    BaseService(const BaseService&) = delete;
+    BaseService(BaseService&&) = delete;
+
+    BaseService& operator=(const BaseService&) = delete;
+    BaseService& operator=(BaseService&&) = delete;
 };
 
 

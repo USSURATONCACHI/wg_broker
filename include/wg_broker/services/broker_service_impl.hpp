@@ -1,5 +1,6 @@
 #pragma once
 
+#include <filesystem>
 #include <string>
 #include <vector>
 
@@ -19,6 +20,7 @@ using BrokerSkeleton = Broker;
 
 class BrokerServiceImpl : public BaseService<BrokerSkeleton> {
 public:
+    BrokerServiceImpl(std::filesystem::path wg_profiles_dir);
 
     virtual CreateSkeletonInfo<BrokerSkeleton> get_create_skeleton_info();
     virtual void connect_skeleton_signals(BrokerSkeleton* skeleton);
@@ -33,6 +35,9 @@ public:
         std::string error;
     };
     std::vector<ProfileStatus> get_profiles(BrokerSkeleton* skeleton, GDBusMethodInvocation *invocation);
+
+private:
+    std::filesystem::path wg_profiles_dir;
 };
 
 

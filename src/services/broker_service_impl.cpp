@@ -1,3 +1,4 @@
+#include <exception>
 #include <wg_broker/services/broker_service_impl.hpp>
 
 #include <filesystem>
@@ -6,10 +7,15 @@
 #include <glib.h>
 #include <wg_broker/gen/broker_skeleton.h>
 
+namespace fs = std::filesystem;
+
+
 namespace ussur {
 namespace wg {
 
+
 using BrokerSkeleton = Broker;
+using ProfileStatus = BrokerServiceImpl::ProfileStatus;
 
 
 // Handles (declarations)
@@ -17,21 +23,22 @@ static gboolean handle_get_profiles(BrokerSkeleton *skeleton, GDBusMethodInvocat
 
 
 // Interface methods:
+BrokerServiceImpl::BrokerServiceImpl(std::filesystem::path wg_profiles_dir)
+    : wg_profiles_dir(wg_profiles_dir)
+{}
 
-// struct ProfileStatus {
-//     std::string name;
-//     std::string content;
-//     std::string log;
-//     bool is_loaded;
-//     bool is_startup;
-//     bool has_error;
-//     std::string error;
-// };
-using ProfileStatus = BrokerServiceImpl::ProfileStatus;
 std::vector<ProfileStatus> 
     BrokerServiceImpl::get_profiles(BrokerSkeleton* skeleton, GDBusMethodInvocation *invocation) 
 {
     std::vector<ProfileStatus> profiles;
+
+    std::cout << "Trying to iterate a directory: " << wg_profiles_dir << std::endl;
+    for (const fs::directory_entry& entry : fs::directory_iterator(wg_profiles_dir)) {
+        if (entry.is_regular_file()) {
+            std::cout << "Found a regular file: " << entry.path() << std::endl;
+        }
+    }
+    std::cout << "Iterated!" << std::endl;
 
     {   
         ProfileStatus p;

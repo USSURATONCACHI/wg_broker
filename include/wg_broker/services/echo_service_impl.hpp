@@ -16,7 +16,6 @@ using EchoSkeleton = EchoService;
 
 class EchoServiceImpl : public BaseService<EchoSkeleton> {
 public:
-
     virtual CreateSkeletonInfo<EchoSkeleton> get_create_skeleton_info();
     virtual void connect_skeleton_signals(EchoSkeleton* skeleton);
 
