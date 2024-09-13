@@ -30,7 +30,7 @@ int main() {
 
     std::cout << "Program starts." << std::endl;
 
-    OwnedPtr<GDBusConnection> connection = ussur::wg::establish_connection(G_BUS_TYPE_SESSION);
+    OwnedPtr<GDBusConnection> connection = ussur::wg::establish_connection(G_BUS_TYPE_SYSTEM);
     std::cout << "Connection established: " << connection.get() << std::endl;
 
     OwnedBusName bus_name = OwnedBusName::acquire(connection.get(), BUS_NAME_STRING,  G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE);
