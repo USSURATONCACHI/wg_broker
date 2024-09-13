@@ -5,15 +5,10 @@
 #include <optional>
 #include <iostream>
 
-
 #include <gio/gio.h>
 
 #include <wg_broker/exceptions.hpp>
 #include <wg_broker/owned_ptr.hpp>
-
-extern "C" {
-    #include <wg_broker/gen/echo_skeleton.h>
-}
 
 namespace ussur {
 namespace wg {

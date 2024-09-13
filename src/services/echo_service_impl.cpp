@@ -2,7 +2,6 @@
 
 #include <wg_broker/gen/echo_skeleton.h>
 
-#include <stdexcept>
 #include <exception>
 #include <string>
 

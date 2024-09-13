@@ -3,8 +3,11 @@
 #include <string>
 
 #include <wg_broker/base_service.hpp>
-#include <wg_broker/gen/echo_skeleton.h>
 #include <gio/gio.h>
+
+extern "C" {
+    #include <wg_broker/gen/echo_skeleton.h>
+}
 
 namespace ussur {
 namespace wg {
