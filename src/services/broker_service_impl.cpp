@@ -111,8 +111,8 @@ static gboolean handle_get_profiles(BrokerSkeleton *skeleton, GDBusMethodInvocat
     broker_complete_get_profiles(skeleton, invocation, result);
     
     // Free the GVariant
-    if (result)
-        g_variant_unref(result);
+    // if (result)
+    //     g_variant_unref(result);
 
     return TRUE;
 }
