@@ -1,42 +1,32 @@
 #include <iostream>
 
-#include <optional>
+#include <ostream>
 #include <stdexcept>
 #include <toml++/toml.hpp>
+
+#include <wg_broker/config.hpp>
 #include <wg_broker/whole_app.hpp>
 
-struct Config {
-    bool is_system_bus;
-    std::string bus_name;
-    std::string wg_profiles_dir;
-    std::string required_group;
-};
-
-static void print_usage(const char* program_name);
-static Config parse_config(const char* config_file);
-
-template<typename T> 
-T value_or_exception(toml::table& tbl, const std::string& field_name);
+static void print_usage(const char* program_name, std::ostream& os);
+static void inner_main(const char* config_file);
 
 int main(int argc, char** argv) {
     if (argc != 2) {
         std::cerr << "No config file specified." << std::endl;
-        print_usage(argv[0]);
+        print_usage(argv[0], std::cerr);
         return 1;
     }
     const char* config_file = argv[1];
 
     try {
-        Config config = parse_config(config_file);
-        
-        ussur::wg::WholeApp app = ussur::wg::create_app();
-        g_main_loop_run(app.loop.get());
-
+        inner_main(config_file);
     } catch (const toml::parse_error& err) {
         std::cerr << "Parsing failed:\n" << err << "\n";
+        print_usage(argv[0], std::cerr);
         return 1;
     } catch (const std::runtime_error& err) {
         std::cerr << "Runtime error:\n" << err.what() << "\n";
+        print_usage(argv[0], std::cerr);
         return 2; 
     }
 
@@ -44,35 +34,18 @@ int main(int argc, char** argv) {
     return 0;
 }
 
-template<typename T> 
-T value_or_exception(toml::table& tbl, const std::string& field_name) {
-    std::optional<T> maybe = tbl[field_name].value<T>();
-
-    if (maybe.has_value()) {
-        return *maybe;
-    } else {
-        throw std::runtime_error("Missing field " + field_name + " in the config");
-    }
+static void inner_main(const char* config_file) {
+    ussur::wg::Config config = ussur::wg::parse_config(config_file);
+    std::cout << "Using config: ";
+    ussur::wg::print_config(config, std::cout);
+    
+    ussur::wg::WholeApp app = ussur::wg::create_app();
+    g_main_loop_run(app.loop.get());
 }
 
-static Config parse_config(const char* config_file) {
-    toml::table tbl = toml::parse_file(config_file);
-    Config conf;
-
-    conf.is_system_bus   = value_or_exception<bool>(tbl, "is_system_bus");
-    conf.bus_name        = value_or_exception<std::string>(tbl, "bus_name");
-    conf.wg_profiles_dir = value_or_exception<std::string>(tbl, "wg_profiles_dir");
-    conf.required_group  = value_or_exception<std::string>(tbl, "required_group");
-
-    return conf;
-}
-
-static void print_usage(const char* program_name) {
-    std::cout << "Usage: " << program_name << " <config_file.toml>" << std::endl;
-    std::cout << std::endl;
-    std::cout << "Config must contain fields:" << std::endl;
-    std::cout << "\t is_system_bus   - type = bool,   recommended = true" << std::endl;
-    std::cout << "\t bus_name        - type = string, recommended = 'ussur.wg.Broker'" << std::endl;
-    std::cout << "\t wg_profiles_dir - type = string, recommended = '/etc/wireguard'" << std::endl;
-    std::cout << "\t required_group  - type = string, recommended = 'wireguarders'" << std::endl;
+static void print_usage(const char* program_name, std::ostream& os) {
+    os << "Usage: " << program_name << " <config_file.toml>" << std::endl;
+    os << std::endl;
+    os << "Config must contain fields:" << std::endl;
+    ussur::wg::print_config_fields(os);
 }

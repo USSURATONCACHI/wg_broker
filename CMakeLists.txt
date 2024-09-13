@@ -26,6 +26,7 @@ add_executable(wg_broker
     src/owned_bus_name.cpp
     src/skeleton.cpp
     src/whole_app.cpp
+    src/config.cpp
 
     src/services/echo_service_impl.cpp
     src/services/broker_service_impl.cpp
