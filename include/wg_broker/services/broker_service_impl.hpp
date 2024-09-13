@@ -1,6 +1,7 @@
 #pragma once
 
 #include <string>
+#include <vector>
 
 #include <gio/gio.h>
 
@@ -16,13 +17,22 @@ namespace wg {
 
 using BrokerSkeleton = Broker;
 
-class EchoServiceImpl : BaseService<Broker> {
+class BrokerServiceImpl : BaseService<BrokerSkeleton> {
 public:
 
-    virtual CreateSkeletonInfo<EchoService> get_create_skeleton_info();
-    virtual void connect_skeleton_signals(EchoService* skeleton);
+    virtual CreateSkeletonInfo<BrokerSkeleton> get_create_skeleton_info();
+    virtual void connect_skeleton_signals(BrokerSkeleton* skeleton);
 
-    std::string echo(EchoService* skeleton, GDBusMethodInvocation *invocation, std::string arg_input);
+    struct ProfileStatus {
+        std::string name;
+        std::string content;
+        std::string log;
+        bool is_loaded;
+        bool is_startup;
+        bool has_error;
+        std::string error;
+    };
+    std::vector<ProfileStatus> get_profiles(BrokerSkeleton* skeleton, GDBusMethodInvocation *invocation);
 };
 
 

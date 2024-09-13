@@ -255,78 +255,12 @@ _g_dbus_codegen_marshal_BOOLEAN__OBJECT (
 
 /* ---- Introspection data for ussur.wg.Broker ---- */
 
-static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_name =
+static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_profiles =
 {
   {
     -1,
-    (gchar *) "name",
-    (gchar *) "s",
-    NULL
-  },
-  FALSE
-};
-
-static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_content =
-{
-  {
-    -1,
-    (gchar *) "content",
-    (gchar *) "s",
-    NULL
-  },
-  FALSE
-};
-
-static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_log =
-{
-  {
-    -1,
-    (gchar *) "log",
-    (gchar *) "s",
-    NULL
-  },
-  FALSE
-};
-
-static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_is_loaded =
-{
-  {
-    -1,
-    (gchar *) "is_loaded",
-    (gchar *) "b",
-    NULL
-  },
-  FALSE
-};
-
-static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_is_startup =
-{
-  {
-    -1,
-    (gchar *) "is_startup",
-    (gchar *) "b",
-    NULL
-  },
-  FALSE
-};
-
-static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_has_error =
-{
-  {
-    -1,
-    (gchar *) "has_error",
-    (gchar *) "b",
-    NULL
-  },
-  FALSE
-};
-
-static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_error =
-{
-  {
-    -1,
-    (gchar *) "error",
-    (gchar *) "s",
+    (gchar *) "profiles",
+    (gchar *) "a(sssbbbs)",
     NULL
   },
   FALSE
@@ -334,13 +268,7 @@ static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_erro
 
 static const GDBusArgInfo * const _broker_method_info_get_profiles_OUT_ARG_pointers[] =
 {
-  &_broker_method_info_get_profiles_OUT_ARG_name.parent_struct,
-  &_broker_method_info_get_profiles_OUT_ARG_content.parent_struct,
-  &_broker_method_info_get_profiles_OUT_ARG_log.parent_struct,
-  &_broker_method_info_get_profiles_OUT_ARG_is_loaded.parent_struct,
-  &_broker_method_info_get_profiles_OUT_ARG_is_startup.parent_struct,
-  &_broker_method_info_get_profiles_OUT_ARG_has_error.parent_struct,
-  &_broker_method_info_get_profiles_OUT_ARG_error.parent_struct,
+  &_broker_method_info_get_profiles_OUT_ARG_profiles.parent_struct,
   NULL
 };
 
@@ -499,13 +427,7 @@ broker_call_get_profiles (
 /**
  * broker_call_get_profiles_finish:
  * @proxy: A #BrokerProxy.
- * @out_name: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_content: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_log: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_is_loaded: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_is_startup: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_has_error: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_error: (out) (optional): Return location for return parameter or %NULL to ignore.
+ * @out_profiles: (out) (optional): Return location for return parameter or %NULL to ignore.
  * @res: The #GAsyncResult obtained from the #GAsyncReadyCallback passed to broker_call_get_profiles().
  * @error: Return location for error or %NULL.
  *
@@ -516,13 +438,7 @@ broker_call_get_profiles (
 gboolean
 broker_call_get_profiles_finish (
     Broker *proxy,
-    gchar **out_name,
-    gchar **out_content,
-    gchar **out_log,
-    gboolean *out_is_loaded,
-    gboolean *out_is_startup,
-    gboolean *out_has_error,
-    gchar **out_error,
+    GVariant **out_profiles,
     GAsyncResult *res,
     GError **error)
 {
@@ -531,14 +447,8 @@ broker_call_get_profiles_finish (
   if (_ret == NULL)
     goto _out;
   g_variant_get (_ret,
-                 "(sssbbbs)",
-                 out_name,
-                 out_content,
-                 out_log,
-                 out_is_loaded,
-                 out_is_startup,
-                 out_has_error,
-                 out_error);
+                 "(@a(sssbbbs))",
+                 out_profiles);
   g_variant_unref (_ret);
 _out:
   return _ret != NULL;
@@ -547,13 +457,7 @@ _out:
 /**
  * broker_call_get_profiles_sync:
  * @proxy: A #BrokerProxy.
- * @out_name: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_content: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_log: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_is_loaded: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_is_startup: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_has_error: (out) (optional): Return location for return parameter or %NULL to ignore.
- * @out_error: (out) (optional): Return location for return parameter or %NULL to ignore.
+ * @out_profiles: (out) (optional): Return location for return parameter or %NULL to ignore.
  * @cancellable: (nullable): A #GCancellable or %NULL.
  * @error: Return location for error or %NULL.
  *
@@ -566,13 +470,7 @@ _out:
 gboolean
 broker_call_get_profiles_sync (
     Broker *proxy,
-    gchar **out_name,
-    gchar **out_content,
-    gchar **out_log,
-    gboolean *out_is_loaded,
-    gboolean *out_is_startup,
-    gboolean *out_has_error,
-    gchar **out_error,
+    GVariant **out_profiles,
     GCancellable *cancellable,
     GError **error)
 {
@@ -587,14 +485,8 @@ broker_call_get_profiles_sync (
   if (_ret == NULL)
     goto _out;
   g_variant_get (_ret,
-                 "(sssbbbs)",
-                 out_name,
-                 out_content,
-                 out_log,
-                 out_is_loaded,
-                 out_is_startup,
-                 out_has_error,
-                 out_error);
+                 "(@a(sssbbbs))",
+                 out_profiles);
   g_variant_unref (_ret);
 _out:
   return _ret != NULL;
@@ -604,13 +496,7 @@ _out:
  * broker_complete_get_profiles:
  * @object: A #Broker.
  * @invocation: (transfer full): A #GDBusMethodInvocation.
- * @name: Parameter to return.
- * @content: Parameter to return.
- * @log: Parameter to return.
- * @is_loaded: Parameter to return.
- * @is_startup: Parameter to return.
- * @has_error: Parameter to return.
- * @error: Parameter to return.
+ * @profiles: Parameter to return.
  *
  * Helper function used in service implementations to finish handling invocations of the <link linkend="gdbus-method-ussur-wg-Broker.GetProfiles">GetProfiles()</link> D-Bus method. If you instead want to finish handling an invocation by returning an error, use g_dbus_method_invocation_return_error() or similar.
  *
@@ -620,23 +506,11 @@ void
 broker_complete_get_profiles (
     Broker *object G_GNUC_UNUSED,
     GDBusMethodInvocation *invocation,
-    const gchar *name,
-    const gchar *content,
-    const gchar *log,
-    gboolean is_loaded,
-    gboolean is_startup,
-    gboolean has_error,
-    const gchar *error)
+    GVariant *profiles)
 {
   g_dbus_method_invocation_return_value (invocation,
-    g_variant_new ("(sssbbbs)",
-                   name,
-                   content,
-                   log,
-                   is_loaded,
-                   is_startup,
-                   has_error,
-                   error));
+    g_variant_new ("(@a(sssbbbs))",
+                   profiles));
 }
 
 /* ------------------------------------------------------------------------ */

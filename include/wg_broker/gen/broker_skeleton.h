@@ -46,13 +46,7 @@ guint broker_override_properties (GObjectClass *klass, guint property_id_begin);
 void broker_complete_get_profiles (
     Broker *object,
     GDBusMethodInvocation *invocation,
-    const gchar *name,
-    const gchar *content,
-    const gchar *log,
-    gboolean is_loaded,
-    gboolean is_startup,
-    gboolean has_error,
-    const gchar *error);
+    GVariant *profiles);
 
 
 
@@ -65,25 +59,13 @@ void broker_call_get_profiles (
 
 gboolean broker_call_get_profiles_finish (
     Broker *proxy,
-    gchar **out_name,
-    gchar **out_content,
-    gchar **out_log,
-    gboolean *out_is_loaded,
-    gboolean *out_is_startup,
-    gboolean *out_has_error,
-    gchar **out_error,
+    GVariant **out_profiles,
     GAsyncResult *res,
     GError **error);
 
 gboolean broker_call_get_profiles_sync (
     Broker *proxy,
-    gchar **out_name,
-    gchar **out_content,
-    gchar **out_log,
-    gboolean *out_is_loaded,
-    gboolean *out_is_startup,
-    gboolean *out_has_error,
-    gchar **out_error,
+    GVariant **out_profiles,
     GCancellable *cancellable,
     GError **error);
 
