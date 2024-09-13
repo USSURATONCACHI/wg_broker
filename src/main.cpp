@@ -10,6 +10,7 @@
 #include <wg_broker/owned_ptr.hpp>
 #include <wg_broker/skeleton.hpp>
 #include <wg_broker/services/echo_service_impl.hpp>
+#include <wg_broker/services/broker_service_impl.hpp>
 
 // extern "C" {
 //     #include <wg_broker/gen/echo_skeleton.h>
@@ -18,12 +19,14 @@
 using ussur::wg::OwnedPtr;
 using ussur::wg::OwnedBusName;
 using ussur::wg::EchoServiceImpl;
+using ussur::wg::BrokerServiceImpl;
+
+using ussur::wg::create_skeleton;
 
 static OwnedPtr<GMainLoop> create_main_loop();
 
 int main() {
     const std::string BUS_NAME_STRING = "ussur.wg.Broker";
-    const std::string OBJ_NAME_STRING = "/ussur/wg/Broker";
 
     std::cout << "Program starts." << std::endl;
 
@@ -36,15 +39,24 @@ int main() {
     OwnedPtr<GMainLoop> loop = create_main_loop();
     std::cout << "Main loop created: " << loop.get() << std::endl;
     
-    EchoServiceImpl service;
+    EchoServiceImpl echo_service;
+    BrokerServiceImpl broker_service;
 
-    OwnedPtr<ussur::wg::EchoSkeleton> skeleton = 
+    OwnedPtr<ussur::wg::EchoSkeleton> echo_skeleton = 
         ussur::wg::create_skeleton<ussur::wg::EchoSkeleton>(
             connection.get(), 
-            OBJ_NAME_STRING, 
-            service.get_create_skeleton_info()
+            "/ussur/wg/Echo", 
+            echo_service.get_create_skeleton_info()
         );
-    std::cout << "Skeleton created: " << skeleton.get() << std::endl;
+    std::cout << "Echo service created: " << echo_skeleton.get() << std::endl;
+
+    OwnedPtr<ussur::wg::BrokerSkeleton> broker_skeleton = 
+        ussur::wg::create_skeleton<ussur::wg::BrokerSkeleton>(
+            connection.get(), 
+            "/ussur/wg/Broker", 
+            broker_service.get_create_skeleton_info()
+        );
+    std::cout << "Broker service created: " << broker_skeleton.get() << std::endl;
 
     g_main_loop_run(loop.get());
 
