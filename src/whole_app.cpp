@@ -1,3 +1,4 @@
+#include "gio/gio.h"
 #include <wg_broker/whole_app.hpp>
 
 #include <wg_broker/dbus_connection.hpp>
@@ -7,15 +8,13 @@ namespace wg {
 
 
 
-WholeApp create_app() {
-    const std::string BUS_NAME_STRING = "ussur.wg.Broker";
-
+WholeApp create_app(Config config) {
     std::cout << "Program starts." << std::endl;
 
-    OwnedPtr<GDBusConnection> connection = ussur::wg::establish_connection(G_BUS_TYPE_SYSTEM);
+    OwnedPtr<GDBusConnection> connection = ussur::wg::establish_connection(config.is_system_bus ? G_BUS_TYPE_SYSTEM : G_BUS_TYPE_SESSION);
     std::cout << "Connection established: " << connection.get() << std::endl;
 
-    OwnedBusName bus_name = OwnedBusName::acquire(connection.get(), BUS_NAME_STRING,  G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE);
+    OwnedBusName bus_name = OwnedBusName::acquire(connection.get(), config.bus_name,  G_BUS_NAME_OWNER_FLAGS_DO_NOT_QUEUE);
     std::cout << "Bus name acquired: " << bus_name.name << std::endl;
 
     OwnedPtr<GMainLoop> loop = create_main_loop();

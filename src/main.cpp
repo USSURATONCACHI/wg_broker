@@ -36,10 +36,11 @@ int main(int argc, char** argv) {
 
 static void inner_main(const char* config_file) {
     ussur::wg::Config config = ussur::wg::parse_config(config_file);
+
     std::cout << "Using config: ";
     ussur::wg::print_config(config, std::cout);
     
-    ussur::wg::WholeApp app = ussur::wg::create_app();
+    ussur::wg::WholeApp app = ussur::wg::create_app(config);
     g_main_loop_run(app.loop.get());
 }
 

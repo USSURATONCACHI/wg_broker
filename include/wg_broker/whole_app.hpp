@@ -7,6 +7,8 @@
 #include <wg_broker/services/broker_service_impl.hpp>
 #include <wg_broker/services/echo_service_impl.hpp>
 
+#include <wg_broker/config.hpp>
+
 namespace ussur {
 namespace wg {
 
@@ -22,7 +24,7 @@ struct WholeApp {
     OwnedPtr<ussur::wg::EchoSkeleton> echo_skeleton;
 };
 
-WholeApp create_app();
+WholeApp create_app(Config config);
 
 OwnedPtr<GMainLoop> create_main_loop();
 
