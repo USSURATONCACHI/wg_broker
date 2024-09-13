@@ -9,8 +9,7 @@ set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GIO REQUIRED gio-2.0)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
-
-include_directories(${DBUS_INCLUDE_DIRS})
+pkg_check_modules(TOML REQUIRED tomlplusplus)
 
 add_library(generated STATIC
     src/gen/echo_skeleton.c
@@ -26,10 +25,11 @@ add_executable(wg_broker
     src/dbus_connection.cpp
     src/owned_bus_name.cpp
     src/skeleton.cpp
+    src/whole_app.cpp
 
     src/services/echo_service_impl.cpp
     src/services/broker_service_impl.cpp
 )
 target_include_directories(wg_broker PUBLIC include)
-target_include_directories(wg_broker PUBLIC ${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS})
-target_link_libraries(wg_broker generated ${GLIB_LIBRARIES} ${GIO_LIBRARIES})
+target_include_directories(wg_broker PUBLIC ${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS} ${TOML_INCLUDE_DIRS})
+target_link_libraries(wg_broker generated ${GLIB_LIBRARIES} ${GIO_LIBRARIES} ${TOML_LIBRARIES})
