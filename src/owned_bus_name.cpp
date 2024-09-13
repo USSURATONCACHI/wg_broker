@@ -35,6 +35,9 @@ OwnedBusName OwnedBusName::acquire(GDBusConnection* conn, const std::string& nam
 }
 
 OwnedBusName::~OwnedBusName() {
+    if (connection == NULL)
+        return;
+    
     GError *error = NULL;
 
     // Call the ReleaseName method on org.freedesktop.DBus interface
@@ -66,7 +69,7 @@ OwnedBusName::~OwnedBusName() {
 }
 
 OwnedBusName::OwnedBusName(OwnedBusName&& move_from) :
-    connection(std::move(move_from.connection)),
+    connection(move_from.connection),
     name(std::move(move_from.name))
 {
     new (&move_from) OwnedBusName();
