@@ -45,7 +45,7 @@ static gboolean handle_echo(EchoSkeleton *skeleton, GDBusMethodInvocation *invoc
         return FALSE;
     }
 
-    echo_service_complete_echo(skeleton, invocation, g_strdup(result.c_str()));
+    echo_service_complete_echo(skeleton, invocation, result.c_str());
     return TRUE;
 }
 
