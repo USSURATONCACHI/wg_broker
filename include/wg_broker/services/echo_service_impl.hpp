@@ -14,7 +14,7 @@ namespace wg {
 
 using EchoSkeleton = EchoService;
 
-class EchoServiceImpl : BaseService<EchoSkeleton> {
+class EchoServiceImpl : public BaseService<EchoSkeleton> {
 public:
 
     virtual CreateSkeletonInfo<EchoSkeleton> get_create_skeleton_info();

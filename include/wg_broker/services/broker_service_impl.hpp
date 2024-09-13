@@ -17,7 +17,7 @@ namespace wg {
 
 using BrokerSkeleton = Broker;
 
-class BrokerServiceImpl : BaseService<BrokerSkeleton> {
+class BrokerServiceImpl : public BaseService<BrokerSkeleton> {
 public:
 
     virtual CreateSkeletonInfo<BrokerSkeleton> get_create_skeleton_info();

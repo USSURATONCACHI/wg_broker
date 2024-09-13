@@ -39,23 +39,15 @@ int main() {
     OwnedPtr<GMainLoop> loop = create_main_loop();
     std::cout << "Main loop created: " << loop.get() << std::endl;
     
-    EchoServiceImpl echo_service;
     BrokerServiceImpl broker_service;
+    EchoServiceImpl echo_service;
 
     OwnedPtr<ussur::wg::EchoSkeleton> echo_skeleton = 
-        ussur::wg::create_skeleton<ussur::wg::EchoSkeleton>(
-            connection.get(), 
-            "/ussur/wg/Echo", 
-            echo_service.get_create_skeleton_info()
-        );
+        echo_service.create_skeleton(connection.get(), "/ussur/wg/Echo");
     std::cout << "Echo service created: " << echo_skeleton.get() << std::endl;
 
     OwnedPtr<ussur::wg::BrokerSkeleton> broker_skeleton = 
-        ussur::wg::create_skeleton<ussur::wg::BrokerSkeleton>(
-            connection.get(), 
-            "/ussur/wg/Broker", 
-            broker_service.get_create_skeleton_info()
-        );
+        broker_service.create_skeleton(connection.get(), "/ussur/wg/Broker");
     std::cout << "Broker service created: " << broker_skeleton.get() << std::endl;
 
     g_main_loop_run(loop.get());
