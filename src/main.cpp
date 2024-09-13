@@ -9,7 +9,7 @@
 #include <wg_broker/owned_bus_name.hpp>
 #include <wg_broker/owned_ptr.hpp>
 #include <wg_broker/skeleton.hpp>
-#include <wg_broker/echo_service_impl.hpp>
+#include <wg_broker/services/echo_service_impl.hpp>
 
 // extern "C" {
 //     #include <wg_broker/gen/echo_skeleton.h>

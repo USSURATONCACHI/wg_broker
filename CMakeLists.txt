@@ -26,7 +26,8 @@ add_executable(wg_broker
     src/dbus_connection.cpp
     src/owned_bus_name.cpp
     src/skeleton.cpp
-    src/echo_service_impl.cpp
+
+    src/services/echo_service_impl.cpp
 )
 target_include_directories(wg_broker PUBLIC include)
 target_include_directories(wg_broker PUBLIC ${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS})

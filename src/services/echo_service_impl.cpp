@@ -1,4 +1,4 @@
-#include <wg_broker/echo_service_impl.hpp>
+#include <wg_broker/services/echo_service_impl.hpp>
 
 #include <wg_broker/gen/echo_skeleton.h>
 

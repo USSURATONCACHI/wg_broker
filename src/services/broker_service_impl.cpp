@@ -1,0 +1,1 @@
+#include <wg_broker/services/broker_service_impl.hpp>
