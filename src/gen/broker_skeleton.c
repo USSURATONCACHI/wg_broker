@@ -260,7 +260,7 @@ static const _ExtendedGDBusArgInfo _broker_method_info_get_profiles_OUT_ARG_prof
   {
     -1,
     (gchar *) "profiles",
-    (gchar *) "a(sssbbbs)",
+    (gchar *) "a(sssbbb)",
     NULL
   },
   FALSE
@@ -447,7 +447,7 @@ broker_call_get_profiles_finish (
   if (_ret == NULL)
     goto _out;
   g_variant_get (_ret,
-                 "(@a(sssbbbs))",
+                 "(@a(sssbbb))",
                  out_profiles);
   g_variant_unref (_ret);
 _out:
@@ -485,7 +485,7 @@ broker_call_get_profiles_sync (
   if (_ret == NULL)
     goto _out;
   g_variant_get (_ret,
-                 "(@a(sssbbbs))",
+                 "(@a(sssbbb))",
                  out_profiles);
   g_variant_unref (_ret);
 _out:
@@ -509,7 +509,7 @@ broker_complete_get_profiles (
     GVariant *profiles)
 {
   g_dbus_method_invocation_return_value (invocation,
-    g_variant_new ("(@a(sssbbbs))",
+    g_variant_new ("(@a(sssbbb))",
                    profiles));
 }
 

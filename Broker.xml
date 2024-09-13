@@ -7,12 +7,11 @@
       <arg type="b" name="is_loaded" direction="out"/>
       <arg type="b" name="is_startup" direction="out"/>
       <arg type="b" name="has_error" direction="out"/>
-      <arg type="s" name="error" direction="out"/>
     </struct> -->
     <!--  (sssbbbs)   -->
 
     <method name="GetProfiles">
-      <arg type="a(sssbbbs)" name="profiles" direction="out"/>
+      <arg type="a(sssbbb)" name="profiles" direction="out"/>
     </method>
 
     <error name="ussur.wg.BrokerError">

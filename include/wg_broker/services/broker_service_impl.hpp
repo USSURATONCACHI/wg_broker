@@ -32,7 +32,6 @@ public:
         bool is_loaded;
         bool is_startup;
         bool has_error;
-        std::string error;
     };
     std::vector<ProfileStatus> get_profiles(BrokerSkeleton* skeleton, GDBusMethodInvocation *invocation);
 

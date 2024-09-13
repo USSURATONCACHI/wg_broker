@@ -27,6 +27,7 @@ add_executable(wg_broker
     src/skeleton.cpp
     src/whole_app.cpp
     src/config.cpp
+    src/util.cpp
 
     src/services/echo_service_impl.cpp
     src/services/broker_service_impl.cpp
