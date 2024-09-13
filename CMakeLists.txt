@@ -14,6 +14,7 @@ include_directories(${DBUS_INCLUDE_DIRS})
 
 add_library(generated STATIC
     src/gen/echo_skeleton.c
+    src/gen/broker_skeleton.c
 )
 target_include_directories(generated PUBLIC include/wg_broker/gen/)
 target_include_directories(generated PUBLIC ${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS})
@@ -24,7 +25,7 @@ add_executable(wg_broker
     src/main.cpp
     src/dbus_connection.cpp
     src/owned_bus_name.cpp
-    src/echo_skeleton.cpp
+    src/skeleton.cpp
     src/echo_service_impl.cpp
 )
 target_include_directories(wg_broker PUBLIC include)

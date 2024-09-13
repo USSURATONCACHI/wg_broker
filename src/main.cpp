@@ -8,7 +8,7 @@
 #include <wg_broker/dbus_connection.hpp>
 #include <wg_broker/owned_bus_name.hpp>
 #include <wg_broker/owned_ptr.hpp>
-#include <wg_broker/echo_skeleton.hpp>
+#include <wg_broker/skeleton.hpp>
 #include <wg_broker/echo_service_impl.hpp>
 
 // extern "C" {
@@ -37,12 +37,12 @@ int main() {
     std::cout << "Main loop created: " << loop.get() << std::endl;
     
     EchoServiceImpl service;
-    std::function<void(EchoService*)> connector = 
-        [&service](EchoService* s) { 
-            service.connect_skeleton_signals(s); 
-        };
 
-    OwnedPtr<EchoService> skeleton = ussur::wg::create_skeleton(connection.get(), OBJ_NAME_STRING, connector);
+    OwnedPtr<EchoService> skeleton = ussur::wg::create_skeleton<EchoService>(
+        connection.get(), 
+        OBJ_NAME_STRING, 
+        service.get_create_skeleton_info()
+    );
     std::cout << "Skeleton created: " << skeleton.get() << std::endl;
 
     g_main_loop_run(loop.get());

@@ -1,0 +1,17 @@
+<node>
+  <interface name="ussur.wg.Broker">
+    <method name="GetProfiles">
+      <arg type="s" name="name" direction="out"/>
+      <arg type="s" name="content" direction="out"/>
+      <arg type="s" name="log" direction="out"/>
+      <arg type="b" name="is_loaded" direction="out"/>
+      <arg type="b" name="is_startup" direction="out"/>
+      <arg type="b" name="has_error" direction="out"/>
+      <arg type="s" name="error" direction="out"/>
+    </method>
+
+    <error name="ussur.wg.BrokerError">
+      <arg type="s" name="message" direction="out"/>
+    </error>
+  </interface>
+</node>

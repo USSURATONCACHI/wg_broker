@@ -1,29 +1,46 @@
-#include <wg_broker/echo_skeleton.hpp>
-#include <wg_broker/owned_ptr.hpp>
-#include <wg_broker/echo_skeleton.hpp>
+#pragma once
 
+#include <string>
 #include <functional>
-
-#include <glib.h>
-#include <gio/gio.h>
-#include <wg_broker/exceptions.hpp>
+#include <optional>
 #include <iostream>
+
+
+#include <gio/gio.h>
+
+#include <wg_broker/exceptions.hpp>
+#include <wg_broker/owned_ptr.hpp>
+
+extern "C" {
+    #include <wg_broker/gen/echo_skeleton.h>
+}
 
 namespace ussur {
 namespace wg {
 
-static void destruct_broker_skeleton(EchoService* skeleton);
 
-OwnedPtr<EchoService> create_skeleton(
+void destruct_skeleton(void* skeleton);
+
+template<typename T>
+using OptFn = std::optional<std::function<T>>;
+
+template<typename T>
+struct CreateSkeletonInfo {
+    std::function<T*()> fn_create_skeleton;
+    OptFn<void(T*)> fn_connect_signals;
+};
+
+
+template<typename T>
+OwnedPtr<T> create_skeleton(
     GDBusConnection* connection, 
     const std::string& object_path,
-    std::function<void(EchoService*)> callback_signal_connect
+    CreateSkeletonInfo<T> create_info
 ) {
-    EchoService* skeleton = echo_service_skeleton_new();
+    T* skeleton = create_info.fn_create_skeleton();
 
-    // if (callback_signal_connect)
-    //     (*callback_signal_connect)(skeleton);
-    callback_signal_connect(skeleton);
+    if (create_info.fn_connect_signals.has_value())
+        (*create_info.fn_connect_signals)(skeleton);
     
     GError *error = NULL;
     gboolean success = g_dbus_interface_skeleton_export(
@@ -43,15 +60,10 @@ OwnedPtr<EchoService> create_skeleton(
     // Print some info for debugging purposes
     std::cout << "Exported an echo skeleton to object path: " << object_path <<  std::endl;
 
-    return OwnedPtr<EchoService>(skeleton, destruct_broker_skeleton);
+    return OwnedPtr<T>(skeleton, destruct_skeleton);
 }
 
-static void destruct_broker_skeleton(EchoService* skeleton) {
-    if (skeleton) {
-        g_dbus_interface_skeleton_unexport(G_DBUS_INTERFACE_SKELETON(skeleton));
-        g_object_unref(skeleton);
-    }
-}
+
 
 } // namespace wg
 } // namespace ussur
