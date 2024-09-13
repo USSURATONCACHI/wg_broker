@@ -17,7 +17,7 @@ public:
     virtual void connect_skeleton_signals(ServiceType* skeleton) = 0;
 
     virtual OwnedPtr<ServiceType> create_skeleton(GDBusConnection* conn, const std::string& object_name) {
-        return create_skeleton<ServiceType>(conn, object_name.c_str(), get_create_skeleton_info());
+        return ussur::wg::create_skeleton<ServiceType>(conn, object_name.c_str(), get_create_skeleton_info());
     }
 };
 
