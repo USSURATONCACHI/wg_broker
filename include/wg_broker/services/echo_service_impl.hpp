@@ -12,14 +12,15 @@ extern "C" {
 namespace ussur {
 namespace wg {
 
+using EchoSkeleton = EchoService;
 
-class EchoServiceImpl : BaseService<EchoService> {
+class EchoServiceImpl : BaseService<EchoSkeleton> {
 public:
 
-    virtual CreateSkeletonInfo<EchoService> get_create_skeleton_info();
-    virtual void connect_skeleton_signals(EchoService* skeleton);
+    virtual CreateSkeletonInfo<EchoSkeleton> get_create_skeleton_info();
+    virtual void connect_skeleton_signals(EchoSkeleton* skeleton);
 
-    std::string echo(EchoService* skeleton, GDBusMethodInvocation *invocation, std::string arg_input);
+    std::string echo(EchoSkeleton* skeleton, GDBusMethodInvocation *invocation, std::string arg_input);
 };
 
 

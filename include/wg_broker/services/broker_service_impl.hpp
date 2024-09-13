@@ -14,8 +14,9 @@ extern "C" {
 namespace ussur {
 namespace wg {
 
+using BrokerSkeleton = Broker;
 
-class EchoServiceImpl : BaseService<EchoService> {
+class EchoServiceImpl : BaseService<Broker> {
 public:
 
     virtual CreateSkeletonInfo<EchoService> get_create_skeleton_info();

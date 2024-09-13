@@ -38,11 +38,12 @@ int main() {
     
     EchoServiceImpl service;
 
-    OwnedPtr<EchoService> skeleton = ussur::wg::create_skeleton<EchoService>(
-        connection.get(), 
-        OBJ_NAME_STRING, 
-        service.get_create_skeleton_info()
-    );
+    OwnedPtr<ussur::wg::EchoSkeleton> skeleton = 
+        ussur::wg::create_skeleton<ussur::wg::EchoSkeleton>(
+            connection.get(), 
+            OBJ_NAME_STRING, 
+            service.get_create_skeleton_info()
+        );
     std::cout << "Skeleton created: " << skeleton.get() << std::endl;
 
     g_main_loop_run(loop.get());
