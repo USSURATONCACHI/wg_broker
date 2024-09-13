@@ -1,0 +1,4 @@
+is_system_bus = true
+bus_name = "ussur.wg.Broker"
+wg_profiles_dir = "/etc/wireguard"
+required_group = "wireguarders"
