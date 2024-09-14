@@ -5,7 +5,7 @@
 
 #include <wg_broker/dbus_connection.hpp>
 #include <wg_broker/services/echo_service_impl.hpp>
-#include <wg_broker/services/broker_service_impl.hpp>
+#include <wg_broker/services/broker/service_impl.hpp>
 
 namespace ussur {
 namespace wg {
@@ -27,14 +27,14 @@ WholeApp create_app(Config config) {
     std::cout << "Directory: " << config.wg_profiles_dir << std::endl;
     std::cout << "When converting: " << std::filesystem::path(config.wg_profiles_dir) << std::endl;
 
-    std::unique_ptr<BrokerServiceImpl> broker_service = std::make_unique<BrokerServiceImpl>(config.wg_profiles_dir);
+    std::unique_ptr<broker::BrokerServiceImpl> broker_service = std::make_unique<broker::BrokerServiceImpl>(config.wg_profiles_dir);
     std::unique_ptr<EchoServiceImpl> echo_service = std::make_unique<EchoServiceImpl>();
 
     OwnedPtr<ussur::wg::EchoSkeleton> echo_skeleton = 
         echo_service->create_skeleton(connection.get(), "/ussur/wg/Echo");
     std::cout << "Echo service created: " << echo_skeleton.get() << std::endl;
 
-    OwnedPtr<ussur::wg::BrokerSkeleton> broker_skeleton = 
+    OwnedPtr<broker::BrokerSkeleton> broker_skeleton = 
         broker_service->create_skeleton(connection.get(), "/ussur/wg/Broker");
     std::cout << "Broker service created: " << broker_skeleton.get() << std::endl;
 

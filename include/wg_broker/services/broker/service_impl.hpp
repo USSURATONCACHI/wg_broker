@@ -1,12 +1,11 @@
 #pragma once
 
 #include <filesystem>
-#include <string>
-#include <vector>
 
 #include <gio/gio.h>
 
 #include <wg_broker/base_service.hpp>
+#include <wg_broker/services/broker/profile_status.hpp>
 
 extern "C" {
     #include <wg_broker/gen/broker_skeleton.h>
@@ -15,6 +14,7 @@ extern "C" {
 
 namespace ussur {
 namespace wg {
+namespace broker {
 
 using BrokerSkeleton = Broker;
 
@@ -25,14 +25,6 @@ public:
     virtual CreateSkeletonInfo<BrokerSkeleton> get_create_skeleton_info();
     virtual void connect_skeleton_signals(BrokerSkeleton* skeleton);
 
-    struct ProfileStatus {
-        std::string name;
-        std::string content;
-        std::string log;
-        bool is_loaded;
-        bool is_startup;
-        bool has_error;
-    };
     std::vector<ProfileStatus> get_profiles(BrokerSkeleton* skeleton, GDBusMethodInvocation *invocation);
 
 private:
@@ -40,5 +32,6 @@ private:
 };
 
 
+} // namespace broker
 } // namespace wg
 } // namespace ussur

@@ -6,6 +6,15 @@ set(CMAKE_CXX_STANDARD 20)
 add_definitions(-DSIMPPL_HAVE_INTROSPECTION=1)
 set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
 
+if(NOT CMAKE_BUILD_TYPE)
+  set(CMAKE_BUILD_TYPE Release)
+endif()
+
+set(CMAKE_CXX_FLAGS "-Wall -Wextra")
+set(CMAKE_CXX_FLAGS_DEBUG "-g")
+set(CMAKE_CXX_FLAGS_RELEASE "-O3")
+
+
 find_package(PkgConfig REQUIRED)
 pkg_check_modules(GIO REQUIRED gio-2.0)
 pkg_check_modules(GLIB REQUIRED glib-2.0)
@@ -30,7 +39,9 @@ add_executable(wg_broker
     src/util.cpp
 
     src/services/echo_service_impl.cpp
-    src/services/broker_service_impl.cpp
+    src/services/broker/service_impl.cpp
+    src/services/broker/service_util.cpp
+    src/services/broker/profile_status.cpp
 )
 target_include_directories(wg_broker PUBLIC include)
 target_include_directories(wg_broker PUBLIC ${GLIB_INCLUDE_DIRS} ${GIO_INCLUDE_DIRS} ${TOML_INCLUDE_DIRS})

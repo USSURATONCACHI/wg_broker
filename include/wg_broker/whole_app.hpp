@@ -6,7 +6,7 @@
 
 #include <wg_broker/owned_ptr.hpp>
 #include <wg_broker/owned_bus_name.hpp>
-#include <wg_broker/services/broker_service_impl.hpp>
+#include <wg_broker/services/broker/service_impl.hpp>
 #include <wg_broker/services/echo_service_impl.hpp>
 
 #include <wg_broker/config.hpp>
@@ -19,10 +19,10 @@ struct WholeApp {
     OwnedBusName bus_name;
     OwnedPtr<GMainLoop> loop;
 
-    std::unique_ptr<BrokerServiceImpl> broker_service;
+    std::unique_ptr<broker::BrokerServiceImpl> broker_service;
     std::unique_ptr<EchoServiceImpl> echo_service;
 
-    OwnedPtr<ussur::wg::BrokerSkeleton> broker_skeleton;
+    OwnedPtr<broker::BrokerSkeleton> broker_skeleton;
     OwnedPtr<ussur::wg::EchoSkeleton> echo_skeleton;
 };
 
